@@ -1,0 +1,107 @@
+1. Arithmetic Operators
+
+| Operator | Meaning             | Example   | Output |
+| -------- | ------------------- | --------- | ------ |
+| `+`      | Addition            | `2 + 3`   | `5`    |
+| `-`      | Subtraction         | `5 - 2`   | `3`    |
+| `*`      | Multiplication      | `3 * 4`   | `12`   |
+| `/`      | Division (float)    | `10 / 4`  | `2.5`  |
+| `//`     | Floor Division      | `10 // 4` | `2`    |
+| `%`      | Modulus (remainder) | `10 % 3`  | `1`    |
+| `**`     | Exponentiation      | `2 ** 3`  | `8`    |
+
+
+2. Assignments Operators
+
+| Operator | Meaning                 | Example             | Equivalent To |
+| -------- | ----------------------- | ------------------- | ------------- |
+| `=`      | Assign                  | `x = 5`             | `x = 5`       |
+| `+=`     | Add and assign          | `x += 2`            | `x = x + 2`   |
+| `-=`     | Subtract and assign     | `x -= 1`            | `x = x - 1`   |
+| `*=`     | Multiply and assign     | `x *= 3`            | `x = x * 3`   |
+| `/=`     | Divide and assign       | `x /= 2`            | `x = x / 2`   |
+| `//= `   | Floor divide and assign | `x //= 2`           | `x = x // 2`  |
+| `%=`     | Modulus and assign      | `x %= 3`            | `x = x % 3`   |
+| `**=`    | Exponent and assign     | `x **= 2`           | `x = x ** 2`  |
+| \  `&=,  | =, ^=, <<=, >>=\`       | Bitwise assignments |               |
+
+
+3. Unary Operators
+
+| Operator | Meaning                 | Example    | Output  |
+| -------- | ----------------------- | ---------- | ------- |
+| `-`      | Unary minus (negation)  | `-5`       | `-5`    |
+| `+`      | Unary plus (same value) | `+5`       | `5`     |
+| `not`    | Logical NOT             | `not True` | `False` |
+| `~`      | Bitwise NOT             | `~5`       | `-6`    |
+
+
+4. Relational (Comparison) Operators
+
+| Operator | Meaning               | Example  | Output |
+| -------- | --------------------- | -------- | ------ |
+| `==`     | Equal to              | `3 == 3` | `True` |
+| `!=`     | Not equal to          | `3 != 4` | `True` |
+| `>`      | Greater than          | `5 > 2`  | `True` |
+| `<`      | Less than             | `2 < 5`  | `True` |
+| `>=`     | Greater than or equal | `4 >= 4` | `True` |
+| `<=`     | Less than or equal    | `3 <= 4` | `True` |
+
+
+5. Logical Operators
+
+| Operator | Meaning                      | Example          | Output  |
+| -------- | ---------------------------- | ---------------- | ------- |
+| `and`    | True if both are True        | `True and False` | `False` |
+| `or`     | True if at least one is True | `True or False`  | `True`  |
+| `not`    | Inverts truth value          | `not True`       | `False` |
+
+
+6. Bitwise Operators
+
+| Operator | Meaning     | Example               | Output (Decimal) | 
+| -------- | ----------- | --------------------- | ---------------- |
+| `&`      | Bitwise AND | `5 & 3` → `101 & 011` | `1`              | 
+| \`       | \`          | Bitwise OR            | \`5              | 
+| `^`      | Bitwise XOR | `5 ^ 3`               | `6`              | 
+| `~`      | Bitwise NOT | `~5`                  | `-6`             | 
+| `<<`     | Left shift  | `5 << 1`              | `10`             | 
+| `>>`     | Right shift | `5 >> 1`              | `2`              | 
+
+
+
+7. Membership Operators
+
+| Operator | Meaning              | Example            | Output |
+| -------- | -------------------- | ------------------ | ------ |
+| `in`     | Value exists         | `'a' in 'bat'`     | `True` |
+| `not in` | Value does not exist | `'z' not in 'bat'` | `True` |
+
+
+8. Identity Operators
+
+| Operator | Meaning         | Example      | Output       |
+| -------- | --------------- | ------------ | ------------ |
+| `is`     | Same object     | `a is b`     | `True/False` |
+| `is not` | Not same object | `a is not b` | `True/False` |
+
+
+9. Special Operators/ Constructs
+
+| Special Symbol | Use                       | Example                             |
+| -------------- | ------------------------- | ----------------------------------- |
+| `lambda`       | Anonymous functions       | `lambda x: x + 1`                   |
+| `yield`        | Generator function output | Used in custom generators           |
+| `not` / `in`   | Dual-role operators       | Used in logic and sequence checking |
+
+
+10. Mathematical Functions (from 'math' module)
+
+| Function       | Meaning              | Example                |
+| -------------- | -------------------- | ---------------------- |
+| `math.sqrt()`  | Square root          | `math.sqrt(16)` → 4    |
+| `math.pow()`   | Power (float result) | `math.pow(2, 3)` → 8.0 |
+| `math.floor()` | Floor (round down)   | `math.floor(3.7)` → 3  |
+| `math.ceil()`  | Ceiling (round up)   | `math.ceil(3.1)` → 4   |
+| `math.sin()`   | Trigonometric sine   | `math.sin(math.pi/2)`  |
+| `math.log()`   | Natural log          | `math.log(10)`         |
