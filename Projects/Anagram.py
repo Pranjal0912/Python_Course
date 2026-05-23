@@ -14,6 +14,5 @@ for char in cleaned_string1:
     if cleaned_string1.count(char) != cleaned_string2.count(char):
         print("The pair of strings are not Anagrams.")
         break
-
-else:
+else: # This else block will be executed only if the for loop is not broken, which means that all the characters in the cleaned_string1 are present in the cleaned_string2 for the same number of times.
     print("The pair of strings are Anagrams.")
