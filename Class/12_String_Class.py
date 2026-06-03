@@ -262,8 +262,6 @@ string13 = "HELLO WORLD"
 print(string13.isupper()) #--> True, since all characters in the string are uppercase letters and there is at least one character
 string14 = "Hello World"
 print(string14.isupper()) #--> False, since there are lowercase letters in the string which are not uppercase
-string15 = "HELLO WORLD"    
-print(string15.isupper()) #--> True, since all characters in the string are uppercase letters and there is at least one character
 
 # 6. istitle() method: It checks if the string is in title case, which means that the first character of each word is uppercase and the rest are lowercase. It returns True if the string is in title case and False otherwise. Note that it returns False if the string is empty or contains any non-title case characters (like all uppercase letters, all lowercase letters, digits, spaces, punctuation, etc.). 
 string16 = "Hello World"
