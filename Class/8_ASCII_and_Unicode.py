@@ -32,4 +32,4 @@ print(a)  # Output: A
 
 # Unicode are divided into different planes, each plane can contain up to 65,536 characters. 
 # The first plane (Plane 0) is called the Basic Multilingual Plane (BMP) and contains most of the commonly used characters.
-# The other planes (Planes 1-16) are called Supplementary Planes and contain less commonly used characters, such as historical scripts, mathematical symbols, and emoji.
+# The other planes (Planes 1-16) are called Supplementary Planes and contain less commonly used characters, such as historical scripts, mathematical symbols, and emoji. 

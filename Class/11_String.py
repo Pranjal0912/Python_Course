@@ -31,8 +31,8 @@ print(d[:7])  #--> if no start is given '0' is taken as default
 print(d[3:7])
 #print(d[-5:-9]) --> This is invalid the start should always be less than stop or we say that slicing is always done in the forward direction WHEN steps are positive
 print(d[-4:-1])
-print(d[0:15:2])#--> If stop > last index in string then its value is set to the last index+1
-print(d[::2]) #--> defualt values are taken in case of empty parameters 
+print(d[0:15:2])#--> If stop > last index in string then its value is set to the last index+1 by default
+print(d[::2]) #--> defualt values are taken in case of empty parameters, start = 0, stop = len(d), step = 2
 print(d[::])#--> All empty means no slicing so prints the entire string as is 
 print(d[::-1])#--> Reverse order 
 print(d[-3:-9:-1])#--> Since steps are negative, start > stop 

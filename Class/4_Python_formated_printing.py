@@ -7,7 +7,7 @@
 #  - w: It is the width of the field in which the variable will be printed. (Optional)
 #  - p: It is the precision for floating-point numbers. (Optional)
 #  - con: It is the type of conversion to be applied to the variable. It can be 's' for string, 'd' for decimal integer, 'f' for floating-point number, 
-#   'o' for octal, 'x' for hexadecimal, ',' for thousand separato, '_' for underscore as thousand separator, and '%' for percentage. (Optional)
+#   'o' for octal, 'x' for hexadecimal, ',' for thousand separator, '_' for underscore, and '%' for percentage. (Optional)
 
 # Lets learn using examples:
 
@@ -36,7 +36,8 @@ print("start {0:^15,} end".format(1234567)) # start    1,234,567    end -> This 
 print("start {0:15.4e} end".format(12.34565634)) # start     1.2346e+01 end -> This will print the floating-point number in scientific notation with 4 digits after the decimal point in a field of width 15.
 # lets try, 'd' conversion type now: 
 data2 = 1243.45689
-print("start {:.2f} end".format(data2))
+print("start {:.2f} end".format(data2)) # start 1243.46 end -> This will print the floating-point number 'data2' with 2 digits after the decimal point. The '.2' before the 'f' conversion type specifies that 2 digits should be printed after the decimal point.
+
 
 
 # There's another method of writing a fromated string in python:

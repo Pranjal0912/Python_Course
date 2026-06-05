@@ -19,7 +19,7 @@ for i in range(7):
     WeeklyHours[i]=int(input())
 
 time=0
-sum = 0
+Total_wages = 0
 overtime_flag = False
 for hours in WeeklyHours:
     if time<=40:
@@ -28,6 +28,7 @@ for hours in WeeklyHours:
     else:
         overtime_flag = True
         sum += hours*payment_rate*overtime
+
 if overtime_flag:
     print(f'Here is your salary with added BONUS for your Overtime:- ${int(sum)}')
 else:

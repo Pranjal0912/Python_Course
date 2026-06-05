@@ -1,3 +1,11 @@
+#-------------Decorator for the project--------------
+Project_title = "URL PARSER"
+print('-'*len(Project_title)*2, "-"*len(Project_title), sep ='' )
+print("-"*len(Project_title),Project_title,"-"*len(Project_title),sep = "")
+print('-'*len(Project_title)*2, "-"*len(Project_title), sep ='' )
+# --------------------Core Logic---------------------
+
+
 url_name = input("Give the URL/URI of the website: ")
 # Sample URL = https://www.udemy.com/course
 protocol = url_name[:url_name.find(":")] # string slicing till the index where ':' first appears in the string 

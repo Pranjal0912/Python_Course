@@ -85,4 +85,4 @@ print(~5) #--> -6, since the bitwise NOT of 5 (0101 in binary) is -6 (1010 in bi
 print(5 << 1) #--> 10, since left shifting 5 (0101 in binary) by 1 bit gives 10 (1010 in binary)
 # x >> n --> right shift of x by n bits    
 print(5 >> 1) #--> 2, since right shifting 5 (0101 in binary) by 1 bit gives 2 (0010 in binary)
-# Note: The above bitwise operators work on the binary representation of integers and can be used for various applications like bit manipulation, masking, etc.# Note: The above bitwise operators work on the binary representation of integers and can be used for various applications like bit manipulation, masking, etc.
+# Note: The above bitwise operators work on the binary representation of integers and can be used for various applications like bit manipulation, masking, etc.
