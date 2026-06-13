@@ -97,8 +97,6 @@ for i in range(len(list)):
             if i != j and j != k and i != k:
                 print(f'{list[i]}{list[j]}{list[k]}')
 # Now we can achieve the same result using itertools.permutations() in a cleaner way:
-for perm in it.permutations(list):
-    print(''.join(perm))
 
 list2= list(it.permutations(list))
 print(list2) # Output: [('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C'), ('B', 'C', 'A'), ('C', 'A', 'B'), ('C', 'B', 'A')], because itertools.permutations() returns an iterator object, not a list. To see the actual permutations, you can convert the iterator to a list using the list() function.   
