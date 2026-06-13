@@ -60,10 +60,14 @@ print(st.median_high(data))
 
 # ------------------ mode() ------------------
 # mode() gives the value that occurs most number of times.
-
-data = [10, 20, 20, 30, 40]
+import statistics as st
+data = [10, 20, 20, 10, 40]
 
 print(st.mode(data))
+# Here it gave 10 as the mode because 10 is the first value that occurs most number of times. If we change the order of values in the list, we will get a different mode.
+data = [20, 10, 20, 10, 40]
+print(st.mode(data))
+
 
 # Here 20 is repeated two times, so mode is 20.
 
@@ -165,7 +169,7 @@ print(st.quantiles(data, n=4))
 
 
 # ------------------ Example ------------------
-
+import statistics as st
 marks = [78, 85, 90, 85, 72, 88, 90, 85]
 
 print("Mean marks:", st.mean(marks))
