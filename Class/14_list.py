@@ -441,5 +441,4 @@ sorted_list = sorted(list) # This will return a new sorted list from the element
 print(sorted_list) # Output: [1, 2, 5, 5, 6, 9], because the sorted() function has returned a new sorted list from the elements of the original list in ascending order.
 print(list) # Output: [5, 2, 9, 1, 5, 6], because the sorted() function does not modify the original list and returns a new sorted list.
 
-# This fucntion is pretty similar to the sort() function but the only difference is that the sort() function modifies the orignal list in place and returns None whereas the sorted() function does not modify the orignal list rather returns a new sorted one.
-
+# This function is pretty similar to the sort() function but the only difference is that the sort() function modifies the original list in place and returns None whereas the sorted() function does not modify the original list rather returns a new sorted one.
