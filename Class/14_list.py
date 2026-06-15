@@ -441,5 +441,84 @@ sorted_list = sorted(list) # This will return a new sorted list from the element
 print(sorted_list) # Output: [1, 2, 5, 5, 6, 9], because the sorted() function has returned a new sorted list from the elements of the original list in ascending order.
 print(list) # Output: [5, 2, 9, 1, 5, 6], because the sorted() function does not modify the original list and returns a new sorted list.
 
-# This fucntion is pretty similar to the sort() function but the only difference is that the sort() function modifies the orignal list in place and returns None whereas the sorted() function does not modify the orignal list rather returns a new sorted one.
+# This function is pretty similar to the sort() function but the only difference is that the sort() function modifies the original list in place and returns None whereas the sorted() function does not modify the original list rather returns a new sorted one.
 
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# LIST COMPREHENSION IN PYTHON:
+
+# Suppose I have a string or any iterable for that matter and I want to create a list of all the characters in that string or iterable. That can be done is serveral ways:
+
+string = "Pranjal"
+list1 = [string] # -> Now this doing this will just create a list with the string as a single element in it. So the output will be ['Pranjal'] and not ['P', 'r', 'a', 'n', 'j', 'a', 'l'] which is what we want.
+
+# One way this can be done is by using the "list()" which takes an iterable as an argument and returns a list of all the elements in that iterable.
+list2 = list(string) # This will create a list of all the characters in the string "Pranjal".
+print(list2) # Output: ['P', 'r', 'a', 'n', 'j', 'a', 'l']
+
+# Another way this can be done is by using a for loop to iterate through each character in the string and append it to a list.
+list3 = []
+for i in string:
+    list3.append(i)
+print(list3) # Output: ['P', 'r', 'a', 'n', 'j', 'a', 'l']
+
+# But this same looping logic can be done in a single line using list comprehension ( and comprehensions can be used with almost all iterables in python like lists, tuples, dictionaries, sets etc) which is a more pythonic way of doing this.
+list4 = [char for char in string] # This will create a list of all the characters in the string "Pranjal" using list comprehension.
+print(list4) # Output: ['P', 'r', 'a', 'n', 'j', 'a', 'l']
+
+# This is list comprehension in its basic form.
+
+# Now we may think why use this if we can achieve the same thing using the list() function, well the answer is that list comprehension is more powerful than the list() function because it allows us to add conditions
+# and perform operations on the elements while creating the list. For exampl:- Make a list of squares of all the numbers from 1 to 10:
+
+squares = [x**2 for x in range(1, 11)] # This will create a list of squares of all the numbers from 1 to 10 using list comprehension.
+print(squares) # Output: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+# Now lets say we want to make a list of all the characters in a string but in lowercase, then we can do that using list comprehension as well.
+string2 = "PrAnJaL"
+lowerlist = [char.lower() for char in string2]
+print(lowerlist) # Output: ['p', 'r', 'a', 'n', 'j', 'a', 'l'], because the lower() function has converted all the characters in the string "PrAnJaL" to lowercase.
+
+# Now lets say we want to make a list of all the even numbers from 1 to 20, then we can do that using list comprehension as well.
+evenlist = [x for x in range(1, 21) if x % 2 == 0] # This will create a list of all the even numbers from 1 to 20 using list comprehension.
+print(evenlist) # Output: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+
+# Now if suppose we want to make list of integers from a string containing numeric values and non-numeric values, then we can do that using list comprehension as well.
+string3 = "P1r2a3n4j5a6l7"
+intlist = [int(char) for char in string3 if char.isnumeric()]
+print(intlist) # Output: [1, 2, 3, 4, 5, 6, 7]
+
+
+#--------------------------------------------------------------------------------------------------------------------------------
+
+# NESTED LISTS IN PYTHON:
+
+# A nested list is a list that contains another list (or lists) as its elements. We can have multiple levels of nesting in a list. Nested lists are useful for representing complex data structures like matrices, trees, graphs etc.
+# Some examples of nested lists are:
+
+list1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] # This is a nested list with three inner lists.
+list2 = [[1,2,[3,4]], [5,6], [7,8,9]] # This is a nested list with three inner lists and one of the inner lists itself contains another list.
+
+print(list1[0]) # Output: [1, 2, 3], because the first element of the list 'list1' is the inner list [1, 2, 3].
+# Now suppose i want to access the element '2' from the inner list [1, 2, 3], then i can do that by using the index of the inner list and the index of the element within that inner list.
+print(list1[0][1]) # Output: 2, because the first index '0' is used to access the inner list [1, 2, 3] and the second index '1' is used to access the element '2' from that inner list.
+# lets try the same thing with list2
+print(list2[0][2][1]) # Output: 4, because the first index '0' is used to access the inner list [1,2,[3,4]], the second index '2' is used to access the inner list [3,4] and the third index '1' is used to access the element '4' from that inner list.
+
+# Some uses of nested lists are:
+# 1. Matrices: We can use nested lists to represent matrices in python. For example, a 3x3 matrix can be represented as a nested list with three inner lists, each containing three elements.
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# 2. For representing a tablular data for eg:- 
+
+# | Name | Age | Marks|
+# |------|-----|------|
+# | John | 20  | 85   |
+# | Jane | 22  | 90   |
+# | Jack | 21  | 80   |
+
+# Now this tabular data can be represented as a nested list in python as follows:
+table = [["Name", "Age", "Marks"], ["John", 20, 85], ["Jane", 22, 90], ["Jack", 21, 80]]
+
+#--------------------------------------------------------------------------------------------------------------------------------
