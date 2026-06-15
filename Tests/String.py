@@ -51,3 +51,77 @@ if not_index < poor_index:
     extrastring = string5[not_index:poor_index+4]
     string5 = string5.replace(extrastring,"good")
 print(string5)
+
+# 7 Write a Python program to find the first repeated word in a given string.
+
+string = "The Quick Brown fox jumps over the lazy dog"
+
+list1 = string.lower().split()
+
+
+list2 = []
+for char in list1:
+    if char in list2:
+        print(char)
+        break
+    else:
+        list2.append(char)
+
+# 8 Remove the leading zeros in an IP address
+
+ip_address = "255.024.01.01"
+ip_list=ip_address.split(".")
+       
+for i in range(len(ip_list)):
+    ip_list[i] = str(int(ip_list[i]))
+
+print(".".join(ip_list))
+
+
+# 9 Write a Python program to capitalize the first and last letters of each word in a given string.
+
+string = "The Quick Brown fox jumps over the lazy dog"
+
+list1 = string.split()
+i =0
+for word in list1:
+    word = word.title()
+    word = word[0:len(word)-1] + word[-1].upper()
+    list1[i] = word
+    i+=1    
+
+string = ""
+for i in list1:
+    string = string + i + " "
+
+print(string)
+
+# Optimal Solution:
+
+string = "The Quick Brown fox jumps over the lazy dog"
+
+new = string[0].upper()
+for i in range(1, len(string)-1):
+    if string[i+1] == " " or string[i-1]==" ":
+        new = new + string[i].upper()
+    else:
+        new = new + string[i]
+new = new + string[len(string)-1].upper()
+print(new)
+
+
+# 8 Write a program to bount the longest susequent substring of 0's in a binary 
+
+string = "1110000100000110"
+count = 0
+zero = []
+for char in string:
+    if char == "0":
+        count +=1
+    else:
+        zero.append(count)
+        count = 0
+
+print(max(zero))
+
+

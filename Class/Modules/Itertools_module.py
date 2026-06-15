@@ -12,11 +12,11 @@ import itertools as it
 # suppose we want to generate an infinite sequence of numbers starting from 1 and incrementing by 1:
 # we can do this:
 
-i = 1
-while True:
-    print(i)
-    i += 1
-#  Now itertools.count() is just a cleaner and more efficient way to achieve the same result:
+# i = 1
+# while True:
+#     print(i)
+#     i += 1
+# Now itertools.count() is just a cleaner and more efficient way to achieve the same result:
 
 for num in it.count(1,1):
     print(num)
