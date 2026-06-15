@@ -92,3 +92,4 @@ print(a, b, c) # Output: 1 2 [3, 4, 5]
 t = (1, 2, 3, 4, 5)
 a, b = t # This will raise a ValueError because there are more values in the tuple than variables to unpack into.
 # So unpacking will only work if the number of variables on the left side of the assignment matches the number of elements in the tuple, or if you use the * operator to capture multiple values into a list.
+

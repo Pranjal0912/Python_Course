@@ -200,3 +200,120 @@ print(id(s1)==id_s1_before) # Output: True (memory address of s1 is same before 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # SET OPERATIONS USING OPERATORS:
+
+# 1. Union: We can also perform union operation using the | operator. So A | B is same as A ∪ B.
+A = {1,2,3,5,7}
+B = {5,7,9,10,11}
+print(A | B) # Output: {1, 2, 3, 5, 7, 9, 10, 11}
+# Now this is also a non-destructive operation, so A and B are not modified.
+
+# 2. Intersection: We can also perform intersection operation using the & operator. So A & B is same as A ∩ B.
+A = {1,2,3,5,7}
+B = {5,7,9,10,11}
+print(A & B) # Output: {5, 7}
+# Now this is also a non-destructive operation, so A and B are not modified.
+
+# 3.Intersection Update: We can also perform intersection update operation using the &= operator. So A &= B is same as A = A ∩ B.
+A = {1,2,3,5,7}
+id_A_before = id(A) # This will give the memory address of A before the intersection update
+B = {5,7,9,10,11}
+A &= B # This is same as writing A = A ∩ B
+print(A) # Output: {5, 7} (A is modified to be the intersection of A and B)
+print(id(A)==id_A_before) # Output: True (memory address of A is same before and after the intersection update, which means that A is modified and not a new set is created)
+
+# 4. Difference: We can also perform difference operation using the - operator. So A - B.
+A = {1,2,3,5,7}
+B = {5,7,9,10,11}
+print(A - B) # Output: {1, 2, 3} (elements that are in A but not in B)
+print(B - A) # Output: {9, 10, 11} (elements that are in B but not in A)
+# Now this is also a non-destructive operation, so A and B are not modified.
+
+# 5. Difference Update: We can also perform difference update operation using the -= operator. 
+A = {1,2,3,5,7}
+id_A_before = id(A) # This will give the memory address of A before the difference update
+B = {5,7,9,10,11}
+A -= B 
+print(A) # Output: {1, 2, 3} (A is modified to be the difference of A and B)
+print(id(A)==id_A_before) # Output: True (memory address of A is same before and after the difference update, which means that A is modified and not a new set is created)
+
+# 6. Symmetric Difference: We can also perform symmetric difference operation using the ^ operator. So A ^ B is same as A Δ B.
+A = {1,2,3,5,7}
+B = {5,7,9,10,11}
+print(A ^ B) # Output: {1, 2, 3, 9, 10, 11} (elements that are in A or in B but not in both)
+# Now this is also a non-destructive operation, so A and B are not modified.   
+
+# 7. Symmetric Difference Update: We can also perform symmetric difference update operation using the ^= operator. So A ^= B is same as A = A Δ B.
+A = {1,2,3,5,7}
+id_A_before = id(A) # This will give the memory address of A before the symmetric difference update
+B = {5,7,9,10,11}
+A ^= B # This is same as writing A = A Δ B
+print(A) # Output: {1, 2, 3, 9, 10, 11} (A is modified to be the symmetric difference of A and B)
+print(id(A)==id_A_before) # Output: True (memory address of A is same before and after the symmetric difference update, which means that A is modified and not a new set is created)
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# ADDING, UPDATION AND REMOVING ELEMENTS FROM A SET:
+
+# 1. add(element): This method is used to add an element to the set. If the element is already present in the set, it will not be added again (because a set does not allow duplicate elements).
+
+s = {1, 2, 3, 4, 5}
+s.add(6) # Adding an element to the set using the add() method
+print(s) # Output: {1, 2, 3, 4, 5, 6} (order may vary)
+s.add(3) # This will not add 3 again to the set because 3 is already present in the set
+print(s) # Output: {1, 2, 3, 4, 5, 6} (order may vary)
+# It takes only one argument, which is the element to be added to the set. It does not return anything, it modifies the original set itself.
+s.add((1,2,3)) # A set can also contain a tuple as an element
+print(s) # Output: {1, 2, 3, 4, 5, 6, (1, 2, 3)} (order may vary)
+s.add([1,2,3]) # This will give an error because a list is mutable and hence cannot be added to a set
+print(s) # Output: {1, 2, 3, 4, 5, 6, (1, 2, 3)} (order may vary)
+
+# 2. update(iterable): This method is used to add multiple elements to the set at once. It takes an iterable (like a string, tuple, etc.) as an argument and adds each element of the iterable to the set but not a list.
+
+s = {1, 2, 3, 4, 5}
+s.updeate((60,70))  # This will add 60 and 70 to the set because a tuple is an iterable and it will add each element of the tuple to the set.
+print(s) # Output: {1, 2, 3, 4, 5, 60, 70} (order may vary)
+s.update("hello") # This will add 'h', 'e', 'l', 'o' to the set because a string is an iterable and it will add each character of the string to the set.
+print(s) # Output: {1, 2, 3, 4, 5, 60, 70, 'h', 'e', 'l', 'o'} (order may vary)
+# It takes only one argument, which is the iterable whose elements are to be added to the set. It does not return anything, it modifies the original set itself.
+
+# 3. copy(): This method is used to create a copy of the set. It returns a new set which is a copy of the original set. The copy is a shallow copy.
+s1 = {1, 2, 3, 4, 5}
+s2 = s1.copy() # This will create a copy of s1 and store it in s2
+print(s2) # Output: {1, 2, 3, 4, 5} (order may vary)
+print(s1 == s2) # Output: True (s1 and s2 have the same elements)
+print(s1 is s2) # Output: False (s1 and s2 are different objects in memory)
+
+# 4. pop(): This method is used to remove and return an arbitrary element from the set. Since a set is an unordered collection, there is no way to know which element will be removed. If the set is empty, it will raise a KeyError.
+s = {1, 2, 3, 4, 5}
+popped_element = s.pop() # This will remove and return an arbitrary element from the set
+print(popped_element) # Output: 1 (or any other element from the set, because it is arbitrary)
+print(s)
+
+# 5. doscard(element): This method is used to remove an element from the set if it is present. If the element is not present in the set, it does nothing (it does not raise an error).
+s = {1, 2, 3, 4, 5}
+s.discard(3) # This will remove 3 from the set because 3 is present in the set
+print(s) # Output: {1, 2, 4, 5} (order may vary)
+s.discard(6) # This will do nothing because 6 is not present in the set
+print(s) # Output: {1, 2, 4, 5} (order may vary)
+
+# 6. remove(element): This method is used to remove an element from the set if it is present. If the element is not present in the set, it raises a KeyError.
+s = {1, 2, 3, 4, 5}
+s.remove(3) # This will remove 3 from the set because 3 is present in the set
+print(s) # Output: {1, 2, 4, 5} (order may vary)
+s.remove(6) # This will raise a KeyError    
+s.remove(20, 30) # This will also raaise an error because remove() method takes only one argument. 
+
+# 7.clear(): This method is used to remove all the elements from the set. It does not take any argument and it modifies the original set itself.
+s = {1, 2, 3, 4, 5}
+s.clear() # This will remove all the elements from the set
+print(s) # Output: set() (an empty set)
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# LIST COMPREHENSIONS AND SET COMPREHENSIONS:
+
+# List comprehension for set are similar to that of list, we don't need to unpack the generator expression to create a set like in the case of tuple comprehension:
+s = {x for x in range(10)} # This will create a set with values from 0 to 9
+print(s) # Output: {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} (order may vary)
+
+# Now just like in list comprehension, we can also add a condition in set comprehension as well as we can also have nested loops in set comprehension as well.

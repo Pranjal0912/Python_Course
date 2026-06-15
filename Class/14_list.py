@@ -277,7 +277,7 @@ print(list) # Output: [1, 2, 3, 4, 5, [6, 7]], because the append() function has
 list.append("python") # This will add the string "python" as a single element to the end of the list
 print(list) # Output: [1, 2, 3, 4, 5, [6, 7], 'python'], because the append() function has added the string "python" as a single element to the end of the list.
 
-# 2. extend(iterable): This function is used to add multiole elements to the end of the list. It takes an iterable as an argument and adds each element of the iterable to the end of the list.
+# 2. extend(iterable): This function is used to add multiple elements to the end of the list. It takes an iterable as an argument and adds each element of the iterable to the end of the list.
 
 list = [1, 2, 3, 4]
 
@@ -441,7 +441,7 @@ sorted_list = sorted(list) # This will return a new sorted list from the element
 print(sorted_list) # Output: [1, 2, 5, 5, 6, 9], because the sorted() function has returned a new sorted list from the elements of the original list in ascending order.
 print(list) # Output: [5, 2, 9, 1, 5, 6], because the sorted() function does not modify the original list and returns a new sorted list.
 
-# This function is pretty similar to the sort() function but the only difference is that the sort() function modifies the original list in place and returns None whereas the sorted() function does not modify the original list rather returns a new sorted one.
+# This fucntion is pretty similar to the sort() function but the only difference is that the sort() function modifies the orignal list in place and returns None whereas the sorted() function does not modify the orignal list rather returns a new sorted one.# This function is pretty similar to the sort() function but the only difference is that the sort() function modifies the original list in place and returns None whereas the sorted() function does not modify the original list rather returns a new sorted one.
 
 
 #--------------------------------------------------------------------------------------------------------------------------------
@@ -520,5 +520,4 @@ matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 # Now this tabular data can be represented as a nested list in python as follows:
 table = [["Name", "Age", "Marks"], ["John", 20, 85], ["Jane", 22, 90], ["Jack", 21, 80]]
-
 #--------------------------------------------------------------------------------------------------------------------------------
