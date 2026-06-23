@@ -1,5 +1,5 @@
 # ------------Problem Statement----------------
-# Write a program to rrotate a list by n positions to the left. Take the input of list and n from the user.
+# Write a program to rotate a list by n positions to the left. Take the input of list and n from the user.
 
 
 #-------------Decorator for the project--------------
