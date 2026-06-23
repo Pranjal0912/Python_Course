@@ -15,7 +15,7 @@ print(s[0])#0 --> 1st from start
 print(s[4]) #4 --> 5th from start 
 print(s[-1]) #-1 --> 1st from last 
 
-#one way of traversal:
+# Ways of traversal:
 #Method_1
 for x in s:
     print(x,end='')
@@ -209,13 +209,13 @@ print(s3.join(tuple1)) #--> 'Hello-World-Python', since it inserts the string '-
 # Parameters:
 # sep: This is the delimiter that specifies where to split the string. It is optional and defaults to any whitespace character (like space, tab, etc.).
 # maxsplit: This is an optional parameter that specifies the maximum number of splits to be performed. If not provided, it splits the string at all occurrences of the delimiter.
-string1 = "Messi Ronaldo Neyman"
-string2 = "Messi-Ronaldo-Neyman"
+string1 = "Messi Ronaldo Neymar"
+string2 = "Messi-Ronaldo-Neymar"
 
-print(string1.split()) #--> ['Messi', 'Ronaldo', 'Neyman'], since it splits the string at whitespace characters as the default delimiter
-print(string2.split('-')) #--> ['Messi', 'Ronaldo', 'Neyman'], since it splits the string at '-' characters as the specified delimiter
-print(string1.split(' ', 1)) #--> ['Messi', 'Ronaldo Neyman'], since it splits the string at the first occurrence of the space character as the specified delimiter and maxsplit is 1, so it only splits once
-print(string2.split("$")) #--> ['Messi-Ronaldo-Neyman'], since it splits the string at '$' characters as the specified delimiter and since there is no '$' in the string, it returns the whole string as a single element in the list
+print(string1.split()) #--> ['Messi', 'Ronaldo', 'Neymar'], since it splits the string at whitespace characters as the default delimiter
+print(string2.split('-')) #--> ['Messi', 'Ronaldo', 'Neymar'], since it splits the string at '-' characters as the specified delimiter
+print(string1.split(' ', 1)) #--> ['Messi', 'Ronaldo Neymar'], since it splits the string at the first occurrence of the space character as the specified delimiter and maxsplit is 1, so it only splits once
+print(string2.split("$")) #--> ['Messi-Ronaldo-Neymar'], since it splits the string at '$' characters as the specified delimiter and since there is no '$' in the string, it returns the whole string as a single element in the list
 # Note: If the specified delimiter is not found in the string, the split() method will return a list containing the original string as its only element.
 
 #Similarly, there is a method called rsplit() which does the same thing but from reverse order

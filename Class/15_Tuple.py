@@ -23,6 +23,7 @@ print(type(b)) # This will print <class 'tuple'> because of the comma it is cons
 
 # Just like for creating a list from an iterable there is a function called list() similarly for creating a tuple from an iterable there is a function called tuple().
 t1 = tuple([1, 2, 3, 4, 5]) # Creating a tuple from a list
+print(type(t1)) # This will print <class 'tuple'> because the list has been converted to a tuple using the tuple() function.
 
 # Another way to create a tuple is like this :
 t2 = 1, 2, 3, 4, 5 # This is also a tuple of integers (without parentheses)

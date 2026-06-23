@@ -3,7 +3,7 @@
 # Blueprint: print('{index:fw.p con}'format(variable))
 # WHERE: 
 #  - index: The position of the variable in the format method. It is optional and can be omitted if the variables are in the same order as they appear in the format string.
-#  - f: It is a flag that can be used to specify the alignment of the variable in the output. It can be '<' for left-alignment, '>' for right-alignment, and '^' for center-alignment.
+#  - f: It is a flag that can be used to specify the alignment of the variable in the output. It can be '<' for left-alignment, '>' for right-alignment, and '^' for center-alignment. (Optional)
 #  - w: It is the width of the field in which the variable will be printed. (Optional)
 #  - p: It is the precision for floating-point numbers. (Optional)
 #  - con: It is the type of conversion to be applied to the variable. It can be 's' for string, 'd' for decimal integer, 'f' for floating-point number, 

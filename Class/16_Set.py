@@ -270,7 +270,7 @@ print(s) # Output: {1, 2, 3, 4, 5, 6, (1, 2, 3)} (order may vary)
 # 2. update(iterable): This method is used to add multiple elements to the set at once. It takes an iterable (like a string, tuple, etc.) as an argument and adds each element of the iterable to the set but not a list.
 
 s = {1, 2, 3, 4, 5}
-s.updeate((60,70))  # This will add 60 and 70 to the set because a tuple is an iterable and it will add each element of the tuple to the set.
+s.update((60,70))  # This will add 60 and 70 to the set because a tuple is an iterable and it will add each element of the tuple to the set.
 print(s) # Output: {1, 2, 3, 4, 5, 60, 70} (order may vary)
 s.update("hello") # This will add 'h', 'e', 'l', 'o' to the set because a string is an iterable and it will add each character of the string to the set.
 print(s) # Output: {1, 2, 3, 4, 5, 60, 70, 'h', 'e', 'l', 'o'} (order may vary)
@@ -289,7 +289,7 @@ popped_element = s.pop() # This will remove and return an arbitrary element from
 print(popped_element) # Output: 1 (or any other element from the set, because it is arbitrary)
 print(s)
 
-# 5. doscard(element): This method is used to remove an element from the set if it is present. If the element is not present in the set, it does nothing (it does not raise an error).
+# 5. discard(element): This method is used to remove an element from the set if it is present. If the element is not present in the set, it does nothing (it does not raise an error).
 s = {1, 2, 3, 4, 5}
 s.discard(3) # This will remove 3 from the set because 3 is present in the set
 print(s) # Output: {1, 2, 4, 5} (order may vary)
@@ -301,7 +301,7 @@ s = {1, 2, 3, 4, 5}
 s.remove(3) # This will remove 3 from the set because 3 is present in the set
 print(s) # Output: {1, 2, 4, 5} (order may vary)
 s.remove(6) # This will raise a KeyError    
-s.remove(20, 30) # This will also raaise an error because remove() method takes only one argument. 
+s.remove(20, 30) # This will also raise an error because remove() method takes only one argument. 
 
 # 7.clear(): This method is used to remove all the elements from the set. It does not take any argument and it modifies the original set itself.
 s = {1, 2, 3, 4, 5}

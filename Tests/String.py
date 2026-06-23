@@ -124,4 +124,138 @@ for char in string:
 
 print(max(zero))
 
+# 9 Write a Python program to find all the common characters in lexicographical order from two given lower case strings. If there are no similar letters print "No common characters".
+
+str1 = "pranjal"
+str2 = "angel"
+lst = []
+for char in str1:
+    if char in str2:
+        if char not in lst:
+            lst.append(char)
+
+print(sorted(lst))
+
+# A very creative method involving set
+
+str1 = "pranjal"
+str2 = "angel"
+set1 = set(str1)
+set2 = set(str2)
+
+# Now to find common elements between 2 sets we can just take the intersection of it 
+set3 = set1.intersection(set2)
+print(" ".join(set3))
+
+# 10 Write a program to make 2 strings anagram by adding to either or both strings:
+
+str1 = "pranjal"
+str2 = "angel"
+
+str1 = str1.strip().replace(" ", "").lower()
+str2 = str2.strip().replace(" ", "").lower()
+
+add1 = ""
+add2 = ""
+checked = ""
+
+for char in str1 + str2:
+    if char not in checked:
+        checked += char
+
+        count1 = str1.count(char)
+        count2 = str2.count(char)
+
+        if count1 < count2:
+            add1 += char * (count2 - count1)
+        elif count1 > count2:
+            add2 += char * (count1 - count2)
+
+str1 += add1
+str2 += add2
+
+print(str1, str2)
+
+# Another way of doing it is without using the checked string is by keeping the result of s1 and s2 in a set so that duplicates are not present at all 
+str1 = "pranjal"
+str2 = "angel"
+
+str1 = str1.strip().replace(" ", "").lower()
+str2 = str2.strip().replace(" ", "").lower()
+
+add1=""
+add2=""
+set = set(str1+str2)
+for char in set:
+    if str1.count(char) > str2.count(char):
+        add2+=char*(str1.count(char)-str2.count(char))
+    elif str1.count(char) < str2.count(char):
+        add1+=char*(str2.count(char)-str1.count(char))
+str1 += add1
+str2 += add2
+
+print(str1, str2, sep=" AND " )
+
+# Another way is this :
+
+string1 = input("Enter string1: ")
+string2 = input("Enter string2: ")
+
+string1 = string1.lower().strip().replace(" ","")
+string2 = string2.lower().strip().replace(" ","")
+
+freq1 = [0]*26
+freq2 = [0]*26
+
+for char in string1:
+    freq1[ord(char)-ord("a")]+=1
+for char in string2:
+    freq2[ord(char)-ord("a")]+=1
+
+print(freq1,freq2, sep = '\n')
+
+add1 = ""
+add2 = ""
+
+for i in range(26):
+    if freq1[i]>freq2[i]:
+        add2+=chr(i+ord("a"))*(freq1[i]-freq2[i])
+    if freq1[i]<freq2[i]:
+        add1+= chr(i+ord("a"))*(freq2[i]-freq1[i])
+        
+string1 = string1 + add1
+string2 = string2 + add2 
+
+print(string1, string2, sep = "\n")
+
+print("Done")
+
+
+# 11 Remove consecutive duplicates from the string
+
+s1 = "aaebdbgeecdcddccfengpp"
+s1 = s1.lower().strip().replace(" ","")
+lst=[]
+print(s1)
+for i in range(len(s1)-1):
+        if s1[i]==s1[i+1]:
+            lst.append(i+1)    
+lst = lst[::-1]
+for i in lst:
+    s1 = s1[0:i] + s1[i+1:] 
+
+print(s1)
+
+# An out of the box solution:
+
+s1 = "aaebdbgeecdcddccfengpp"
+result = ""
+
+for ch in s1:
+    if result == "" or result[-1] != ch:
+        result += ch
+
+print(result)
+
+
 

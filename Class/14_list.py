@@ -342,6 +342,188 @@ list2[3][0] = 40 # This will modify the first element of the list [4,5] to 40 in
 print(list1) # Output: [1, 2, 3, [40, 5]], because the first element of the list [4,5] has been modified to 40 in the original list 'list1' due to the fact that both list1 and list2 are pointing to the same mutable object [4,5] in memory.
 print(list2) # Output: [1, 2, 3, [40, 5]], because the first element of the list [4,5] has been modified to 40 in the new list 'list2' as well.
 
+# SHALLOW COPY vs DEEP COPY
+
+# 1. What does copy() do?
+# -----------------------
+# The copy() function creates a SHALLOW COPY of a list.
+#
+# Shallow copy means:
+#   - Python creates a NEW outer list object
+#   - But it DOES NOT recursively copy the objects inside the list
+#   - Instead, it copies only the REFERENCES of the elements
+#
+# In simple words:
+# copy() copies the container, not everything inside the container.
+
+
+# 2. Example of shallow copy
+# --------------------------
+#
+#   list1 = [1, 2, 3, 4]
+#   list2 = list1.copy()
+#
+# Now:
+#   id(list1) != id(list2)
+#
+# because list1 and list2 are two different outer list objects.
+
+
+# 3. Important: Elements are NOT copied
+# -------------------------------------
+# Even though the outer list is new, the elements inside are NOT newly created.
+# Their references are copied.
+#
+# So conceptually:
+#
+#   list1 ---> [ ref1, ref2, ref3, ref4 ]
+#   list2 ---> [ ref1, ref2, ref3, ref4 ]
+#
+# Both lists contain references to the same element objects.
+
+
+# 4. Why does this usually not cause problems?
+# --------------------------------------------
+# If the list contains IMMUTABLE objects like:
+#   - int
+#   - float
+#   - str
+#   - tuple
+#
+# then sharing references is usually safe because immutable objects
+# cannot be modified in-place.
+#
+# Example:
+#
+#   - list1 = [1,2,3]
+#   - list2 = list1.copy()
+#   - list2[0] = 100
+#
+# Python does NOT modify integer 1.
+# Instead, it makes list2 point to a new integer object (100).
+#
+# Therefore list1 remains unchanged.
+
+
+# 5. Small Integer Caching
+# ------------------------
+# Python optimizes commonly used small integers (usually -5 to 256)
+# by reusing the same integer objects in memory.
+#
+# Example:
+#
+#   - a = 3
+#   - b = 3
+#
+#   id(a) == id(b)   # Usually True
+#
+# This optimization is called SMALL INTEGER CACHING.
+#
+# But this is only an optimization and not the main concept of copying.
+
+
+# 6. The important edge case: Nested Mutable Objects
+# --------------------------------------------------
+# Problem happens when the list contains MUTABLE objects like:
+#   - list
+#   - dict
+#   - set
+#
+# Example:
+#
+#   list1 = [1, 2, 3, [4, 5]]
+#   list2 = list1.copy()
+#
+# Outer list is copied.
+# Inner nested list is NOT copied.
+#
+# So:
+#
+#   list1[3] is list2[3]
+#
+# becomes True.
+#
+# Both variables point to the SAME nested list object.
+
+
+# 7. Why modifying nested mutable objects affects both lists
+# ----------------------------------------------------------
+#
+#   list2[3][0] = 40
+#
+# This modifies the shared inner list object itself.
+#
+# Since both list1 and list2 point to the same inner list,
+# both see the change.
+#
+# Result:
+#
+#   - list1 = [1,2,3,[40,5]]
+#   - list2 = [1,2,3,[40,5]]
+#
+# This happens because both outer lists share the same nested mutable object.
+
+
+# 8. Best Analogy (Bag and Notebook)
+# ----------------------------------
+# Think of:
+#
+# Outer list  = Bag
+# Nested list = Notebook inside the bag
+#
+# SHALLOW COPY:
+# Python gives you a new bag,
+# but puts the SAME notebook inside both bags.
+#
+# So now:
+#   Bag 1 -> Notebook
+#   Bag 2 -> Same Notebook
+#
+# If you write something in the notebook,
+# both bags appear updated because both contain the same notebook.
+#
+# DEEP COPY:
+# Python gives you:
+#   - a new bag
+#   - and a new notebook
+#
+# Now both are completely independent.
+
+
+# 9. Deep Copy
+# ------------
+# If you want to recursively copy everything (including nested objects),
+# use deepcopy().
+#
+# Example:
+#
+#   import copy
+#   list2 = copy.deepcopy(list1)
+#
+# Now even nested mutable objects are copied.
+#
+# Therefore:
+#
+#   list1[3] is list2[3]
+#
+# becomes False.
+
+
+# 10. Final Rule
+# --------------
+# SHALLOW COPY (copy()):
+#   ✔ Copies outer object
+#   ✘ Does NOT copy nested objects
+#
+# DEEP COPY (deepcopy()):
+#   ✔ Copies outer object
+#   ✔ Copies all nested objects recursively
+#
+# Core rule to remember:
+#
+# copy() copies the outer container only.
+# Nested mutable objects are shared unless deepcopy() is used.
+
 
 # -> Removing an element from a list: pop(), remove(), clear() and del-keyword etc                                                            
 

@@ -18,30 +18,36 @@ else: # This else block will be executed only if the for loop is not broken, whi
     print("The pair of strings are Anagrams.")
 
 
-# Convert to anagram:
-string1 = "sahejbharati"
-string2 = "sahejbha"
 
-string1 = string1.lower().strip()
-string2 = string2.lower().strip()
+# An intersting way of making an anagram :
+string1 = input("Enter string1: ")
+string2 = input("Enter string2: ")
 
-high_string = string2 if len(string1)<len(string2) else string1
+string1 = string1.lower().strip().replace(" ","")
+string2 = string2.lower().strip().replace(" ","")
 
+freq1 = [0]*26
+freq2 = [0]*26
 
-for char in high_string:
-    if string1.count(char)==string2.count(char):
-        continue
-    else:
-        char_1_count = string1.count(char)
-        char_2_count = string2.count(char)
-        target_string = string1 if char_1_count > char_2_count else string2
+for char in string1:
+    freq1[ord(char)-ord("a")]+=1
+for char in string2:
+    freq2[ord(char)-ord("a")]+=1
+
+print(freq1,freq2, sep = '\n')
+
+add1 = ""
+add2 = ""
+
+for i in range(26):
+    if freq1[i]>freq2[i]:
+        add2+=chr(i+ord("a"))*(freq1[i]-freq2[i])
+    if freq1[i]<freq2[i]:
+        add1+= chr(i+ord("a"))*(freq2[i]-freq1[i])
         
-        char_diff = abs(char_1_count - char_2_count)
-        if target_string == string1:
-            string1 = string1.replace(char,"",char_diff)
-        else:
-            string2 = string2.replace(char,"",char_diff)
-    
-print(string1, string2)
-        
-        
+string1 = string1 + add1
+string2 = string2 + add2 
+
+print(string1, string2, sep = "\n")
+
+print("Done")
