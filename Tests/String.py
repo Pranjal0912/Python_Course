@@ -258,4 +258,84 @@ for ch in s1:
 print(result)
 
 
+# Another brilliant method is this :
 
+s1 = "aaaaebbbdbgeecdcddccfenggppp"
+result = s1[0]
+
+for i in range(1,len(s1)):
+    if s1[i] != s1[i-1]:
+        result += s1[i]
+
+print(result)
+
+# 12 write a program to find the first repeated word in a sentence :(with out using any python specific function like count etc )
+
+str = "There is a good chance that time will reverse its flow and will now run back."
+str = str.lower()
+
+result = []
+word = ""
+
+for char in str:
+    if char != " ":
+        word += char
+    else:
+        result.append(word)
+        word = ""
+
+print(result)
+
+# Now we will find the first word that is common:
+
+for word in result:
+    result.remove(word)
+    if word in result:
+        print(f"{word} is the first repeating word")
+        break
+
+
+# 13 Write a Python program to generate two strings from a given string. For the first string, use the characters that occur only once, and for the second, use the characters that occur multiple times in the said string.
+
+string1 = "aabbcceffgh"
+one="" 
+multiple=""
+
+for char in string1:
+    if string1.count(char) > 1:
+        if char not in multiple:
+            multiple+=char
+    else:
+        one+=char
+
+print(one, multiple, sep = "\n")
+
+# 14 Write a prostring = "ABABCA"
+substring = []
+for i in range(len(string)):
+    for j in range(i+1,len(string)+1):
+            substring.append(string[i:j])
+
+print(substring)
+
+#14 Write a program to print and count the number of substrings from a given string :
+
+# Method 1: First make substring of length 1 then 2, then up until ...substring = len(string)
+str = "ABABCA"
+substring = []
+for length in range(1,len(str)+1):
+    for i in range(0,len(str)):
+        if length + i <= len(str):
+            substring.append(str[i:length+i])
+print(substring)
+
+# Method 2: Sliding window select one character and make all possible substring starting from that character:
+string = "ABABCA"
+substring = []
+for i in range(len(string)):
+    for j in range(i+1,len(string)+1):
+            substring.append(string[i:j])
+
+print(substring)
+
+# 15 Write a program to calculate the longest common substring in 2 given strings 
