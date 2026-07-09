@@ -82,7 +82,7 @@ print(d3) # Output: {1: 4.5, 23.4: True, (3+4j): 'pranjal'} -> A dictionary with
 # Mutable objects like list, dict and set are NOT hashable because their
 # contents (and hence their hash) can change.
 
-d4 = {(1,2):"Tuple as key", "NAME": "Pranjal", "Flag": } # So if we have to use a group of values as a key, we can use a tuple as a key in the dictionary because tuples are immutable and hashable. 
+d4 = {(1,2):"Tuple as key", "NAME": "Pranjal", "Flag": True} # So if we have to use a group of values as a key, we can use a tuple as a key in the dictionary because tuples are immutable and hashable. 
 # NOTE: But only a certain kinds on tuples are hashable, if suppose a tuple contains a list, then that tuple will not be hashable because the list is mutable and not hashable. Therefore the tuple will also not be hashable.
 #--> So only those tuples are hashable which contain only hashable data types as their elements. For example:
 t1 = (1,2,3) # This is a hashable tuple because it contains only hashable data types as its elements (int, float, str, bool, tuple, frozenset).
