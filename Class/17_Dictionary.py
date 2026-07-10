@@ -154,6 +154,7 @@ d1 = dict(l1) # This will convert the list of tuples into a dictionary.
 print(d1) # Output: {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four'}
 
 # 2. Using zip() function:
+
 # The zip() function can be used to combine two lists (or other iterables) into a zip object. The first list will provide the keys and the second list will provide the values.
 # Q-> Now what is a zip object? 
 #   - A zip object is an ITERATOR that generates tuples containing elements from the input iterables.
@@ -165,9 +166,25 @@ print(d1) # Output: {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four'}
 l1 = ["a", "b", "c", "d"]
 l2 = [1, 2, 3, 4]
 l3 = zip(l1, l2) # This will create a zip object that contains pairs of elements from the two lists.
+# If there were more elements in one list than the other, the zip object would only contain pairs up to the length of the shorter list. The extra elements in the longer list would be ignored.
 
 # let us see how that zip object looks like:
 print(l3) # Output: <zip object at 0x7f8c8c8c8c8c> -> This is a zip object that contains pairs of elements from the two lists. It is an iterator that generates tuples containing elements from the input iterables.
+# Now we can convert this zip object into a dictionary using the dict() constructor:
+d1 = dict(l3) # This will convert the zip object into a dictionary.
+print(d1) # Output: {'a': 1, 'b': 2, 'c': 3, 'd': 4} -> This is a dictionary that contains key-value pairs from the two lists.
+
+# 3. Using enumerate() function:
+
+# The enumerate() function can be used to create a dictionary where the keys are the indices of the elements in the iterable and the values are the elements themselves.
+l1 = ["One", "Two", "Three", "Four"]
+d1 = dict(enumerate(l1)) # This will create a dictionary where the keys are the indices of the elements in the list and the values are the elements themselves.
+print(d1) # Output: {0: 'One', 1: 'Two', 2: 'Three', 3: 'Four'} -> This is a dictionary that contains key-value pairs where the keys are the indices of the elements in the list and the values are the elements themselves.
+
+# Now if we were to have different starting index for the keys, we can use an additional argument in the enumerate() function to specify the starting index for the keys in the dictionary.
+d2 = dict(enumerate(l1, start=1)) # This will create a dictionary where the keys are the indices of the elements in the list starting from 1 and the values are the elements themselves.
+print(d2) # Output: {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four'} -> This is a dictionary that contains key-value pairs where the keys are the indices of the elements in the list starting from 1 and the values are the elements themselves.
+
 
 # ACESSING DICTIONARY ELEMENTS:
 
