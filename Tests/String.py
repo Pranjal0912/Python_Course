@@ -1,341 +1,382 @@
-# 1 Write a Python program to calculate the length of a string.
-string = input('Enter a string:')
-print(len(string)) 
+# # 1 Write a Python program to calculate the length of a string.
+# string = input('Enter a string:')
+# print(len(string)) 
 
-# 2 Write a Python program to get a string made of the first 2 and last 2 characters of a given string. If the string length is less than 2, return the empty string instead.
-string2 = input("Enter a string")
-if len(string2) < 2:
-    print("")
-else:
-    start = string2[:2]
-    rev = string2[len(string2)-2::1]
-    print(start+rev)
+# # 2 Write a Python program to get a string made of the first 2 and last 2 characters of a given string. If the string length is less than 2, return the empty string instead.
+# string2 = input("Enter a string")
+# if len(string2) < 2:
+#     print("")
+# else:
+#     start = string2[:2]
+#     rev = string2[len(string2)-2::1]
+#     print(start+rev)
 
-# 3 Write a Python program to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
-string3 = "restart"
-firstchar = string3[0]
-newstr = string3.replace("r","$")
-newstr = firstchar + newstr[1:]
-print(newstr)
+# # 3 Write a Python program to get a string from a given string where all occurrences of its first char have been changed to '$', except the first char itself.
+# string3 = "restart"
+# firstchar = string3[0]
+# newstr = string3.replace("r","$")
+# newstr = firstchar + newstr[1:]
+# print(newstr)
 
-# 4 Write a Python program to get a single string from two given strings, separated by a space and swap the first two characters of each string.
-str1 = input("Enter first string:")
-str2 = input("Enter second string:")
+# # 4 Write a Python program to get a single string from two given strings, separated by a space and swap the first two characters of each string.
+# str1 = input("Enter first string:")
+# str2 = input("Enter second string:")
 
-str1_first2 = str1[0:2]
-str2_first2 = str2[0:2]
+# str1_first2 = str1[0:2]
+# str2_first2 = str2[0:2]
 
-str1 = str1.replace(str1_first2,str2_first2)
-str2 = str2.replace(str2_first2, str1_first2)
+# str1 = str1.replace(str1_first2,str2_first2)
+# str2 = str2.replace(str2_first2, str1_first2)
 
-print(f'- String1:- {str1}\n- String2:- {str2}')
+# print(f'- String1:- {str1}\n- String2:- {str2}')
 
-# 5 Write a Python program to add 'ing' at the end of a given string (length should be at least 3). If the given string already ends with 'ing', add 'ly' instead. If the string length of the given string is less than 3, leave it unchanged.
-string4 = input("Enter a string:")
+# # 5 Write a Python program to add 'ing' at the end of a given string (length should be at least 3). If the given string already ends with 'ing', add 'ly' instead. If the string length of the given string is less than 3, leave it unchanged.
+# string4 = input("Enter a string:")
 
-if len(string4) < 3:
-    print(string4)
-elif string4.endswith('ing'):
-    string4 = string4 + 'ly'
-else:
-    string4 = string4 + 'ing'
+# if len(string4) < 3:
+#     print(string4)
+# elif string4.endswith('ing'):
+#     string4 = string4 + 'ly'
+# else:
+#     string4 = string4 + 'ing'
 
-print(string4)    
+# print(string4)    
 
-# 6 Write a Python program to find the first appearance of the substrings 'not' and 'poor' in a given string. If 'not' follows 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the resulting string.
-string5 = input("Enter a string:")
-not_index = string5.find('not')
-poor_index = string5.find('poor')
+# # 6 Write a Python program to find the first appearance of the substrings 'not' and 'poor' in a given string. If 'not' follows 'poor', replace the whole 'not'...'poor' substring with 'good'. Return the resulting string.
+# string5 = input("Enter a string:")
+# not_index = string5.find('not')
+# poor_index = string5.find('poor')
 
-if not_index < poor_index:
-    extrastring = string5[not_index:poor_index+4]
-    string5 = string5.replace(extrastring,"good")
-print(string5)
+# if not_index < poor_index:
+#     extrastring = string5[not_index:poor_index+4]
+#     string5 = string5.replace(extrastring,"good")
+# print(string5)
 
-# 7 Write a Python program to find the first repeated word in a given string.
+# # 7 Write a Python program to find the first repeated word in a given string.
 
-string = "The Quick Brown fox jumps over the lazy dog"
+# string = "The Quick Brown fox jumps over the lazy dog"
 
-list1 = string.lower().split()
+# list1 = string.lower().split()
 
 
-list2 = []
-for char in list1:
-    if char in list2:
-        print(char)
-        break
-    else:
-        list2.append(char)
+# list2 = []
+# for char in list1:
+#     if char in list2:
+#         print(char)
+#         break
+#     else:
+#         list2.append(char)
 
-# 8 Remove the leading zeros in an IP address
+# # 8 Remove the leading zeros in an IP address
 
-ip_address = "255.024.01.01"
-ip_list=ip_address.split(".")
+# ip_address = "255.024.01.01"
+# ip_list=ip_address.split(".")
        
-for i in range(len(ip_list)):
-    ip_list[i] = str(int(ip_list[i]))
+# for i in range(len(ip_list)):
+#     ip_list[i] = str(int(ip_list[i]))
 
-print(".".join(ip_list))
-
-
-# 9 Write a Python program to capitalize the first and last letters of each word in a given string.
-
-string = "The Quick Brown fox jumps over the lazy dog"
-
-list1 = string.split()
-i =0
-for word in list1:
-    word = word.title()
-    word = word[0:len(word)-1] + word[-1].upper()
-    list1[i] = word
-    i+=1    
-
-string = ""
-for i in list1:
-    string = string + i + " "
-
-print(string)
-
-# Optimal Solution:
-
-string = "The Quick Brown fox jumps over the lazy dog"
-
-new = string[0].upper()
-for i in range(1, len(string)-1):
-    if string[i+1] == " " or string[i-1]==" ":
-        new = new + string[i].upper()
-    else:
-        new = new + string[i]
-new = new + string[len(string)-1].upper()
-print(new)
+# print(".".join(ip_list))
 
 
-# 8 Write a program to bount the longest susequent substring of 0's in a binary 
+# # 9 Write a Python program to capitalize the first and last letters of each word in a given string.
 
-string = "1110000100000110"
-count = 0
-zero = []
-for char in string:
-    if char == "0":
-        count +=1
-    else:
-        zero.append(count)
-        count = 0
+# string = "The Quick Brown fox jumps over the lazy dog"
 
-print(max(zero))
+# list1 = string.split()
+# i =0
+# for word in list1:
+#     word = word.title()
+#     word = word[0:len(word)-1] + word[-1].upper()
+#     list1[i] = word
+#     i+=1    
 
-# 9 Write a Python program to find all the common characters in lexicographical order from two given lower case strings. If there are no similar letters print "No common characters".
+# string = ""
+# for i in list1:
+#     string = string + i + " "
 
-str1 = "pranjal"
-str2 = "angel"
-lst = []
-for char in str1:
-    if char in str2:
-        if char not in lst:
-            lst.append(char)
+# print(string)
 
-print(sorted(lst))
+# # Optimal Solution:
 
-# A very creative method involving set
+# string = "The Quick Brown fox jumps over the lazy dog"
 
-str1 = "pranjal"
-str2 = "angel"
-set1 = set(str1)
-set2 = set(str2)
+# new = string[0].upper()
+# for i in range(1, len(string)-1):
+#     if string[i+1] == " " or string[i-1]==" ":
+#         new = new + string[i].upper()
+#     else:
+#         new = new + string[i]
+# new = new + string[len(string)-1].upper()
+# print(new)
 
-# Now to find common elements between 2 sets we can just take the intersection of it 
-set3 = set1.intersection(set2)
-print(" ".join(set3))
 
-# 10 Write a program to make 2 strings anagram by adding to either or both strings:
+# # 8 Write a program to bount the longest susequent substring of 0's in a binary 
 
-str1 = "pranjal"
-str2 = "angel"
+# string = "1110000100000110"
+# count = 0
+# zero = []
+# for char in string:
+#     if char == "0":
+#         count +=1
+#     else:
+#         zero.append(count)
+#         count = 0
 
-str1 = str1.strip().replace(" ", "").lower()
-str2 = str2.strip().replace(" ", "").lower()
+# print(max(zero))
 
-add1 = ""
-add2 = ""
-checked = ""
+# # 9 Write a Python program to find all the common characters in lexicographical order from two given lower case strings. If there are no similar letters print "No common characters".
 
-for char in str1 + str2:
-    if char not in checked:
-        checked += char
+# str1 = "pranjal"
+# str2 = "angel"
+# lst = []
+# for char in str1:
+#     if char in str2:
+#         if char not in lst:
+#             lst.append(char)
 
-        count1 = str1.count(char)
-        count2 = str2.count(char)
+# print(sorted(lst))
 
-        if count1 < count2:
-            add1 += char * (count2 - count1)
-        elif count1 > count2:
-            add2 += char * (count1 - count2)
+# # A very creative method involving set
 
-str1 += add1
-str2 += add2
+# str1 = "pranjal"
+# str2 = "angel"
+# set1 = set(str1)
+# set2 = set(str2)
 
-print(str1, str2)
+# # Now to find common elements between 2 sets we can just take the intersection of it 
+# set3 = set1.intersection(set2)
+# print(" ".join(set3))
 
-# Another way of doing it is without using the checked string is by keeping the result of s1 and s2 in a set so that duplicates are not present at all 
-str1 = "pranjal"
-str2 = "angel"
+# # 10 Write a program to make 2 strings anagram by adding to either or both strings:
 
-str1 = str1.strip().replace(" ", "").lower()
-str2 = str2.strip().replace(" ", "").lower()
+# str1 = "pranjal"
+# str2 = "angel"
 
-add1=""
-add2=""
-set = set(str1+str2)
-for char in set:
-    if str1.count(char) > str2.count(char):
-        add2+=char*(str1.count(char)-str2.count(char))
-    elif str1.count(char) < str2.count(char):
-        add1+=char*(str2.count(char)-str1.count(char))
-str1 += add1
-str2 += add2
+# str1 = str1.strip().replace(" ", "").lower()
+# str2 = str2.strip().replace(" ", "").lower()
 
-print(str1, str2, sep=" AND " )
+# add1 = ""
+# add2 = ""
+# checked = ""
 
-# Another way is this :
+# for char in str1 + str2:
+#     if char not in checked:
+#         checked += char
 
-string1 = input("Enter string1: ")
-string2 = input("Enter string2: ")
+#         count1 = str1.count(char)
+#         count2 = str2.count(char)
 
-string1 = string1.lower().strip().replace(" ","")
-string2 = string2.lower().strip().replace(" ","")
+#         if count1 < count2:
+#             add1 += char * (count2 - count1)
+#         elif count1 > count2:
+#             add2 += char * (count1 - count2)
 
-freq1 = [0]*26
-freq2 = [0]*26
+# str1 += add1
+# str2 += add2
 
-for char in string1:
-    freq1[ord(char)-ord("a")]+=1
-for char in string2:
-    freq2[ord(char)-ord("a")]+=1
+# print(str1, str2)
 
-print(freq1,freq2, sep = '\n')
+# # Another way of doing it is without using the checked string is by keeping the result of s1 and s2 in a set so that duplicates are not present at all 
+# str1 = "pranjal"
+# str2 = "angel"
 
-add1 = ""
-add2 = ""
+# str1 = str1.strip().replace(" ", "").lower()
+# str2 = str2.strip().replace(" ", "").lower()
 
-for i in range(26):
-    if freq1[i]>freq2[i]:
-        add2+=chr(i+ord("a"))*(freq1[i]-freq2[i])
-    if freq1[i]<freq2[i]:
-        add1+= chr(i+ord("a"))*(freq2[i]-freq1[i])
+# add1=""
+# add2=""
+# set = set(str1+str2)
+# for char in set:
+#     if str1.count(char) > str2.count(char):
+#         add2+=char*(str1.count(char)-str2.count(char))
+#     elif str1.count(char) < str2.count(char):
+#         add1+=char*(str2.count(char)-str1.count(char))
+# str1 += add1
+# str2 += add2
+
+# print(str1, str2, sep=" AND " )
+
+# # Another way is this :
+
+# string1 = input("Enter string1: ")
+# string2 = input("Enter string2: ")
+
+# string1 = string1.lower().strip().replace(" ","")
+# string2 = string2.lower().strip().replace(" ","")
+
+# freq1 = [0]*26
+# freq2 = [0]*26
+
+# for char in string1:
+#     freq1[ord(char)-ord("a")]+=1
+# for char in string2:
+#     freq2[ord(char)-ord("a")]+=1
+
+# print(freq1,freq2, sep = '\n')
+
+# add1 = ""
+# add2 = ""
+
+# for i in range(26):
+#     if freq1[i]>freq2[i]:
+#         add2+=chr(i+ord("a"))*(freq1[i]-freq2[i])
+#     if freq1[i]<freq2[i]:
+#         add1+= chr(i+ord("a"))*(freq2[i]-freq1[i])
         
-string1 = string1 + add1
-string2 = string2 + add2 
+# string1 = string1 + add1
+# string2 = string2 + add2 
 
-print(string1, string2, sep = "\n")
+# print(string1, string2, sep = "\n")
 
-print("Done")
-
-
-# 11 Remove consecutive duplicates from the string
-
-s1 = "aaebdbgeecdcddccfengpp"
-s1 = s1.lower().strip().replace(" ","")
-lst=[]
-print(s1)
-for i in range(len(s1)-1):
-        if s1[i]==s1[i+1]:
-            lst.append(i+1)    
-lst = lst[::-1]
-for i in lst:
-    s1 = s1[0:i] + s1[i+1:] 
-
-print(s1)
-
-# An out of the box solution:
-
-s1 = "aaebdbgeecdcddccfengpp"
-result = ""
-
-for ch in s1:
-    if result == "" or result[-1] != ch:
-        result += ch
-
-print(result)
+# print("Done")
 
 
-# Another brilliant method is this :
+# # 11 Remove consecutive duplicates from the string
 
-s1 = "aaaaebbbdbgeecdcddccfenggppp"
-result = s1[0]
+# s1 = "aaebdbgeecdcddccfengpp"
+# s1 = s1.lower().strip().replace(" ","")
+# lst=[]
+# print(s1)
+# for i in range(len(s1)-1):
+#         if s1[i]==s1[i+1]:
+#             lst.append(i+1)    
+# lst = lst[::-1]
+# for i in lst:
+#     s1 = s1[0:i] + s1[i+1:] 
 
-for i in range(1,len(s1)):
-    if s1[i] != s1[i-1]:
-        result += s1[i]
+# print(s1)
 
-print(result)
+# # An out of the box solution:
 
-# 12 write a program to find the first repeated word in a sentence :(with out using any python specific function like count etc )
+# s1 = "aaebdbgeecdcddccfengpp"
+# result = ""
 
-str = "There is a good chance that time will reverse its flow and will now run back."
-str = str.lower()
+# for ch in s1:
+#     if result == "" or result[-1] != ch:
+#         result += ch
 
-result = []
-word = ""
-
-for char in str:
-    if char != " ":
-        word += char
-    else:
-        result.append(word)
-        word = ""
-
-print(result)
-
-# Now we will find the first word that is common:
-
-for word in result:
-    result.remove(word)
-    if word in result:
-        print(f"{word} is the first repeating word")
-        break
+# print(result)
 
 
-# 13 Write a Python program to generate two strings from a given string. For the first string, use the characters that occur only once, and for the second, use the characters that occur multiple times in the said string.
+# # Another brilliant method is this :
 
-string1 = "aabbcceffgh"
-one="" 
-multiple=""
+# s1 = "aaaaebbbdbgeecdcddccfenggppp"
+# result = s1[0]
 
-for char in string1:
-    if string1.count(char) > 1:
-        if char not in multiple:
-            multiple+=char
-    else:
-        one+=char
+# for i in range(1,len(s1)):
+#     if s1[i] != s1[i-1]:
+#         result += s1[i]
 
-print(one, multiple, sep = "\n")
+# print(result)
 
-# 14 Write a prostring = "ABABCA"
-substring = []
-for i in range(len(string)):
-    for j in range(i+1,len(string)+1):
-            substring.append(string[i:j])
+# # 12 write a program to find the first repeated word in a sentence :(with out using any python specific function like count etc )
 
-print(substring)
+# str = "There is a good chance that time will reverse its flow and will now run back."
+# str = str.lower()
 
-#14 Write a program to print and count the number of substrings from a given string :
+# result = []
+# word = ""
 
-# Method 1: First make substring of length 1 then 2, then up until ...substring = len(string)
-str = "ABABCA"
-substring = []
-for length in range(1,len(str)+1):
-    for i in range(0,len(str)):
-        if length + i <= len(str):
-            substring.append(str[i:length+i])
-print(substring)
+# for char in str:
+#     if char != " ":
+#         word += char
+#     else:
+#         result.append(word)
+#         word = ""
 
-# Method 2: Sliding window select one character and make all possible substring starting from that character:
-string = "ABABCA"
-substring = []
-for i in range(len(string)):
-    for j in range(i+1,len(string)+1):
-            substring.append(string[i:j])
+# print(result)
 
-print(substring)
+# # Now we will find the first word that is common:
 
-# 15 Write a program to calculate the longest common substring in 2 given strings 
+# for word in result:
+#     result.remove(word)
+#     if word in result:
+#         print(f"{word} is the first repeating word")
+#         break
+
+
+# # 13 Write a Python program to generate two strings from a given string. For the first string, use the characters that occur only once, and for the second, use the characters that occur multiple times in the said string.
+
+# string1 = "aabbcceffgh"
+# one="" 
+# multiple=""
+
+# for char in string1:
+#     if string1.count(char) > 1:
+#         if char not in multiple:
+#             multiple+=char
+#     else:
+#         one+=char
+
+# print(one, multiple, sep = "\n")
+
+# #14 Write a program to print and count the number of substrings from a given string :
+
+# # Method 1: First make substring of length 1 then 2, then up until ...substring = len(string)
+# str = "ABABCA"
+# substring = []
+# for length in range(1,len(str)+1):
+#     for i in range(0,len(str)):
+#         if length + i <= len(str):
+#             substring.append(str[i:length+i])
+# print(substring)
+
+# # Method 2: Sliding window select one character and make all possible substring starting from that character:
+# string = "ABABCA"
+# substring = []
+# for i in range(len(string)):
+#     for j in range(i+1,len(string)+1):
+#             substring.append(string[i:j])
+
+# print(substring)
+
+# # 15 Write a program to calculate the longest common substring in 2 given strings 
+# s1 = "ABABCAB"
+# s2 = "BABACBA"
+
+# substring1= []
+# for i in range(len(s1)):
+#     for j in range(i+1,len(s1)+1):
+#         substring1.append(s1[i:j])
+
+# substring2= []
+# for i in range(len(s2)):
+#     for j in range(i+1,len(s2)+1):
+#         substring2.append(s2[i:j])
+
+# common_list = set(substring1)&set(substring2)
+# common_list = list(common_list)
+
+# max=""
+# for i in range(len(common_list)):
+#     if len(max)<len(common_list[i]):
+#         max = common_list[i]
+
+# print(max)
+
+
+# This can be done using a DP ( dynamic programming ) approach as well:
+
+s1 = "ABABCAB"
+s2 = "BABACBA"
+
+n = len(s1)
+m = len(s2)
+
+dp = [[0]*(m+1) for _ in range(n+1)]
+
+max_length = 0
+end_index = 0
+for i in range(1,n+1):
+    for j in range(1,m+1):
+        if s1[i-1]==s2[j-1]:
+            dp[i][j]=dp[i-1][j-1] + 1
+
+            if dp[i][j] > max_length:
+                max_length=dp[i][j]
+                end_index = i
+        else:
+            dp[i][j]=0
+
+print(s1[end_index-max_length:end_index])
+        
