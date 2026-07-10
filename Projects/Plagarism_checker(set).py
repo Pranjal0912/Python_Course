@@ -24,4 +24,4 @@ all_words = set1|set2
 print(common, all_words, len(common), len(all_words), sep = ";")
 similarity_ratio = (len(common)/len(all_words))
 
-print(similarity_ratio)
+print(f"similarity Ratio: {similarity_ratio:.2f}") # This will print the similarity ratio as a float with 2 decimal places.
