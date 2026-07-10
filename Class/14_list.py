@@ -702,4 +702,9 @@ matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
 # Now this tabular data can be represented as a nested list in python as follows:
 table = [["Name", "Age", "Marks"], ["John", 20, 85], ["Jane", 22, 90], ["Jack", 21, 80]]
+
+# List comprehension for 2D list:
+
+list_2d = [[col for col in range(1,4)] for row in range(1,4)] # This will create a 2D list (3x3 matrix) using list comprehension.
+print(list_2d) # Output: [[1, 2, 3], [1, 2, 3], [1, 2, 3]], because the inner list comprehension creates a list of columns for each row and the outer list comprehension creates a list of rows.
 #--------------------------------------------------------------------------------------------------------------------------------
