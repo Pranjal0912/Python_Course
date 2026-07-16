@@ -72,7 +72,7 @@ print(d3) # Output: {1: 4.5, 23.4: True, (3+4j): 'pranjal'} -> A dictionary with
 # => The dictionary would become inconsistent/corrupted. Therefore dictionary keys must be HASHABLE.
 
 # A hashable object is one whose hash value never changes during its lifetime. Most immutable objects are hashable:
-#       -int
+#       - int
 #       - float
 #       - str
 #       - bool
@@ -93,7 +93,7 @@ t2 = (1,2,[1,2,3]) # This is not a hashable tuple.
 # Hash Collisions
 # -----------------------------------------------------------------------------
 #
-# - Different keys can sometimes produce the same bucket. This is called a HASH COLLISION.
+# - Different keys can sometimes produce the same bucket. This is called a HASH COLLISION. 
 #
 # Python resolves collisions internally (using open addressing and probing in CPython) and then compares the actual keys using equality (==) to identify the correct one. Therefore:
 
@@ -128,8 +128,6 @@ print(d) # Output: {'apple': 1, 'banana': 2, 'cat': 3} -> The order of the key-v
 # Difference between Dictionary and Set
 # -----------------------------------------------------------------------------
 
-
-
 # Dictionary:
 #   • Uses hashing internally.
 #   • Preserves insertion order (Python 3.7+).
@@ -142,9 +140,10 @@ print(d) # Output: {'apple': 1, 'banana': 2, 'cat': 3} -> The order of the key-v
 #   • Stores only unique elements.
 #   • Elements must be hashable.
 
+# -----------------------------------------------------------------------------
 # SOME METHODS OF DICTIONARY CREATING DICTIONARIES:
 # -----------------------------------------------------------------------------
-
+# A) Using the dict() constructor:
 # 1. Iterable pair method:
 
 # Using the dict() constructor we can convert a list of tuples ( or a list of lists, a tuple of tuples, a tuple of lists, etc.) into a dictionary. 
@@ -170,22 +169,49 @@ l3 = zip(l1, l2) # This will create a zip object that contains pairs of elements
 
 # let us see how that zip object looks like:
 print(l3) # Output: <zip object at 0x7f8c8c8c8c8c> -> This is a zip object that contains pairs of elements from the two lists. It is an iterator that generates tuples containing elements from the input iterables.
+print(list(l3)) # Output: [('a', 1), ('b', 2), ('c', 3), ('d', 4)] 
 # Now we can convert this zip object into a dictionary using the dict() constructor:
+l3 = zip(l1, l2) # Recreate the zip object because it was exhausted by list(l3)
 d1 = dict(l3) # This will convert the zip object into a dictionary.
 print(d1) # Output: {'a': 1, 'b': 2, 'c': 3, 'd': 4} -> This is a dictionary that contains key-value pairs from the two lists.
 
 # 3. Using enumerate() function:
 
-# The enumerate() function can be used to create a dictionary where the keys are the indices of the elements in the iterable and the values are the elements themselves.
+#Enumerate() function takes an iterable and returns an enumerate object that yields pairs of (index, element) for each element in the iterable. The index starts from 0 by default, but you can specify a different starting index using the start parameter.
 l1 = ["One", "Two", "Three", "Four"]
+l2 = enumerate(l1) # This will create an enumerate object that contains pairs of (index, element) for each element in the list.
+print(l2) # Output: <enumerate object at 0x7f8c8c8c8c8c> -> This is an enumerate object that contains pairs of (index, element) for each element in the list. It is an iterator that generates tuples containing the index and the element from the input iterable.
+print(list(l2)) #-> and object of enumerate is also an iterator, so we can convert it into a list using the list() constructor. This will print a list of tuples containing the index and the element from the input iterable.
+# But an enumerate object doesn't get exhausted like a zip object so we can directly convert it into a dictionary using the dict() constructor:
 d1 = dict(enumerate(l1)) # This will create a dictionary where the keys are the indices of the elements in the list and the values are the elements themselves.
 print(d1) # Output: {0: 'One', 1: 'Two', 2: 'Three', 3: 'Four'} -> This is a dictionary that contains key-value pairs where the keys are the indices of the elements in the list and the values are the elements themselves.
 
 # Now if we were to have different starting index for the keys, we can use an additional argument in the enumerate() function to specify the starting index for the keys in the dictionary.
 d2 = dict(enumerate(l1, start=1)) # This will create a dictionary where the keys are the indices of the elements in the list starting from 1 and the values are the elements themselves.
 print(d2) # Output: {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four'} -> This is a dictionary that contains key-value pairs where the keys are the indices of the elements in the list starting from 1 and the values are the elements themselves.
+#--------------------------------------------------------------------------------------------------------------------
+# Now lets see how to create a dictionary using dictionary comprehension:
+# B) Using dictionary comprehension:
 
+# 1.Iterable pairs:
 
+l1 = [(1, "One"), (2, "Two"), (3, "Three"), (4, "Four")]
+d1 = {k: v for k, v in l1} # This will create a dictionary using dictionary comprehension where the keys and values are taken from the list of tuples.
+print(d1) # Output: {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four'} -> This is a dictionary that contains key-value pairs from the list of tuples.
+
+# 2. zip() function:
+l1 = ["a", "b", "c", "d"]
+l2 = [1, 2, 3, 4]
+l3 = zip(l1, l2) # This will create a zip object that contains pairs of elements from the two lists.
+d1 = {k: v for k, v in l3} # This will create a dictionary using dictionary comprehension where the keys and values are taken from the zip object.
+print(d1) # Output: {'a': 1, 'b': 2, 'c': 3, 'd': 4} -> This is a dictionary that contains key-value pairs from the zip object.
+
+# 3. enumerate() function:
+l1 = ["One", "Two", "Three", "Four"]
+d1 = {i: v for i, v in enumerate(l1, start=1)} # This will create a dictionary using dictionary comprehension where the keys are the indices of the elements in the list starting from 1 and the values are the elements themselves.
+print(d1) # Output: {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four'} -> This is a dictionary that contains key-value pairs where the keys are the indices of the elements in the list starting from 1 and the values are the elements themselves.
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # ACESSING DICTIONARY ELEMENTS:
 
 # 1. Reading:
@@ -244,3 +270,111 @@ print(list(d.values())) # Output: ['John', 30, 'New York'] -> This is a list of 
 print(list(d.values())[0]) # Output: John -> This is the first value in the dictionary.
 print(list(d.values())[1]) # Output: 30 -> This is the second value in the dictionary.
 print(list(d.values())[2]) # Output: New York -> This is the third value in the dictionary.
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# METHODS OF DICTIONARY:
+
+# 1. Looping through a dictionary:
+
+# We can loop through a dictionary :
+#   - using the 'keys()' method to get the keys of the dictionary and then using indexing to access the values of the dictionary.
+#   - using the 'values()' method to get the values of the dictionary.
+#   - using the 'items()' method to get the key-value pairs of the dictionary.
+#   - using the 'get()' method to get the value of a key in the dictionary.
+
+# lets see how to use these methods to loop through a dictionary:
+d = {"Name":"John", "Age":30, "City":"New York"}
+# A) Looping through the keys of the dictionary using the 'keys()' method:
+print(d.keys()) # Output: dict_keys(['Name', 'Age', 'City']) -> This is a view object that displays a list of all the keys in the dictionary. This is not a list, but it can be converted into a list using the list() function.
+# Although its the view object is not a list but it is still an iterable object, so we can use a for loop to iterate over the keys of the dictionary.
+
+for key in d.keys(): # This will iterate over the keys of the dictionary using the 'keys()' method.
+    print(key, f' : {d[key]}') # Output: Name: John, Age: 30, City: New York -> This will print the key and its corresponding value in the dictionary.
+
+# B) Looping through the values of the dictionary using the 'values()' method:
+print(d.values()) # Output: dict_values(['John', 30, 'New York']) -> Again this is a view object that displays a list of all the values in the dictionary. 
+for value in d.values(): # This will iterate over the values of the dictionary using the 'values()' method.
+    print(value) # Output: John, 30, New York -> This will print all the values in the dictionary.
+
+# C) Looping through the key-value pairs of the dictionary using the 'items()' method:
+print(d.items()) # Output: dict_items([('Name', 'John'), ('Age', 30), ('City', 'New York')]) -> This is a view object that displays a list of all the key-value pairs in the dictionary such that each element in the list is a tuple of (key, value). 
+for k,v in d.items(): # This will iterate over the key-value pairs of the dictionary using the 'items()' method.
+    print(k, f' : {v}') # Output: Name: John, Age: 30, City: New York -> This will print the key and its corresponding value in the dictionary.
+
+# D) Looping through the keys of the dictionary using the 'get()' method:
+for key in d: # This will iterate over the keys of the dictionary using the 'get()' method.
+    print(key , f' : {d.get(key)}') # Output: Name: John, Age: 30, City: New York -> This will print the key and its corresponding value in the dictionary.
+
+# - get() function's signature is: get(key, default=None) -> This means that if the key is not present in the dictionary, it will return the default value (which is None by default). We can specify a different default value if we want.
+print(d.get("Country", "Not Found")) # Output: Not Found -> This will return the default value "Not Found" because the key "Country" is not present in the dictionary.
+# Thats another difference between using the 'get()' method and using indexing to access the value of a key in the dictionary.
+#   - If we use indexing to access the value of a key that is not present in the dictionary, it will raise a KeyError. 
+#   - If we use the 'get()' method to access the value of a key that is not present in the dictionary, it will return the default value (which is None by default).
+
+# There is another function called 'setdefault()' which is similar to the 'get()' method but it also allows us to set a default value for a key if the key is not present in the dictionary, that is it actually adds a new key-value pair to the dictionary if the key is not present in the dictionary. 
+
+# The signature of the 'setdefault()' method is: setdefault(key, default=None) -> This means that if the key is not present in the dictionary, it will add a new key-value pair to the dictionary with the specified key and default value (which is None by default). We can specify a different default value if we want.
+print(d.setdefault("Country", "USA")) # Output: USA -> This will add a new key-value pair to the dictionary with the key "Country" and the default value "USA" because the key "Country" is not present in the dictionary.
+print(d) # Output: {'Name': 'John', 'Age': 30, 'City': 'New York', 'Country': 'USA'} -> This is the updated dictionary that contains the new key-value pair.
+
+# 2. Some other useful methods of dictionary are:
+
+# A) update() method: 
+# Syntax: dictionary_name.update(other_dictionary) 
+# - This method updates the dictionary with the key-value pairs from another dictionary. 
+# - If a key already exists in the dictionary, its value will be updated with the new value from the other dictionary.
+# Example:
+d = {"Name":"John", "Age":30, "City":"New York"}
+d1 = {"Age":31, "Country":"USA"}
+d.update(d1) # This will update the dictionary d with the key-value pairs from the dictionary d1. The value of the key "Age" will be updated to 31 and a new key-value pair "Country":"USA" will be added to the dictionary d.
+print(d) # Output: {'Name': 'John', 'Age': 31, 'City': 'New York', 'Country': 'USA'} -> This is the updated dictionary that contains the new key-value pair and the updated value of the key "Age".
+
+# B) fromkeys() method:
+# Syntax: dictionary_name.fromkeys(iterable, value)
+# - This method creates a new dictionary with keys from the specified iterable and values set to the specified value (which is None by default)
+# Example:
+d = dict.fromkeys(["Name", "Age", "City"], "Unknown")
+print(d) # Output: {'Name': 'Unknown', 'Age': 'Unknown', 'City': 'Unknown'} -> This creates a new dictionary with the specified keys and the specified value.
+# - We can observe one thing in this method, that is its called on the dict class itself and not on an instance of the dict class. This is because it is a class method / static method. We will learn about static methods in the later classes of this course. 
+ 
+# C) copy() method:
+# Syntax: dictionary_name.copy()
+# - This method returns a shallow copy of the dictionary. A shallow copy means that it creates a new dictionary with the same key-value pairs as the original dictionary, but the new dictionary is a separate object in memory.
+# Example:
+d = {"Name":"John", "Age":30, "City":"New York"}
+d_copy = d.copy() # This will create a shallow copy of the dictionary d.
+print(d_copy) # Output: {'Name': 'John', 'Age': 30, 'City': 'New York'} -> This is the copied dictionary.
+print(d, f'This is the original dict', sep = ' ->')
+print(d is d_copy) # Output: False -> This means that the original dictionary and the copied dictionary are two different objects in memory.
+
+# D) pop() method:
+# Syntax: dictionary_name.pop(key, default)
+# - This method removes the specified key from the dictionary and returns its value.
+# Example
+d1 = {1:"One", 2:"Two", 3:"Three", 4:"Four"}
+print(d1.pop(2)) # Output: Two -> This will remove the key 2 from the dictionary and return its value "Two".
+print(d1) # Output: {1: 'One', 3: 'Three', 4: 'Four'} -> This is the updated dictionary that does not contain the key 2.
+print(d1.pop(5, "Not Found")) # Output: Not Found -> This will return the default value "Not Found" because the key 5 is not present in the dictionary.
+
+# E) popitem() method:
+# Syntax: dictionary_name.popitem()
+# - This method removes and returns the last inserted key-value pair from the dictionary as a tuple.
+# Example:
+d1 = {1:"One", 2:"Two", 3:"Three", 4:"Four"}
+print(d1.popitem()) # Output: (4, 'Four') -> This will remove the last inserted key-value pair (4, 'Four') from the dictionary and return it as a tuple.
+print(d1) # Output: {1: 'One', 2: 'Two', 3: 'Three'} -> This is the updated dictionary that does not contain the last inserted key-value pair.
+
+# F) clear() method:
+# Syntax: dictionary_name.clear()
+# - This method removes all key-value pairs from the dictionary, leaving it empty.
+# Example:
+d1 = {1:"One", 2:"Two", 3:"Three", 4:"Four"}
+d1.clear() # This will remove all key-value pairs from the dictionary d1.
+print(d1, type(d1)) # Output: {} <class 'dict'> -> This is the updated dictionary that is now empty.
+
+
+
+
+
+
