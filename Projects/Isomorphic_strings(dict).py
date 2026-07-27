@@ -50,6 +50,10 @@ print(flag)
 s1 = "abccba"
 s2 = "gcsscg"
 
+if len(s1) != len(s2):
+    print("The strings are not isomorphic!")
+    exit()
+
 p1, p2 = [], []
 count1, count2 = 0, 0
 visited1, visited2 = {}, {}

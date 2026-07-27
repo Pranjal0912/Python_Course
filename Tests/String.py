@@ -380,6 +380,9 @@ for i in range(1,n+1):
 
 print(s1[end_index-max_length:end_index])
 
+
+# Write a program to concatenate uncommon characters from 2 strings and print the result
+
 s1 = " abcdpqr"
 s2 = " xabcdyz"
 
@@ -395,4 +398,80 @@ print(result)
 
 
 string = "abcdpqr"
-string.replace
+
+# Write a Python program to move all spaces to the front of a given string in a single traversal.
+
+string = " jil jklk klkjk   lkjlk "
+non_space = ""
+space = ""
+
+for char in string:
+    if char != " ":
+        non_space+=char
+    else:
+        space+=" "
+
+print(space,non_space, sep = "")
+
+
+# Write a program to find Uppercase, Lowercase, Digits and Special Characters in a string
+
+string = "Pranjal@123"
+char_count= {"Uppercase":0, "Lowercase":0, "Digits":0, "Special Characters":0}
+
+for char in string:
+    if char.isupper():
+        char_count["Uppercase"] += 1
+    elif char.islower():
+        char_count["Lowercase"] += 1
+    elif char.isdigit():
+        char_count["Digits"] += 1
+    else:
+        char_count["Special Characters"] += 1
+print(char_count)
+
+# Write a Python program to find the minimum window in a given string that will contain all the characters of another given string.
+
+string = "ADOBECODEBANC"
+target = "ABC"
+bucket = []
+for i in range(len(string)):
+    for j in range(i+1,len(string)+1):
+        aim = string[i:j]
+        for k in target:
+            if k in aim:
+                continue
+            else:
+                break
+        else:
+            bucket.append(aim)
+
+print(sorted(bucket, key = len)[0])
+
+ # Write a program to check if 2 strings are isomorphic or not.       
+s1 = "abccba"
+s2 = "gcsscf"
+
+if len(s1) != len(s2):
+    print("The strings are not isomorphic!")
+else:
+    p1,p2 = [],[]
+    visited_1,visited_2 = {},{}
+
+    for i in range(len(s1)):
+        if s1[i] not in visited_1:
+            visited_1[s1[i]]=i
+
+        p1.append(visited_1[s1[i]])
+
+    for i in range(len(s2)):
+        if s2[i] not in visited_2:
+            visited_2[s2[i]]=i
+    
+        p2.append(visited_2[s2[i]])
+print(p1,p2)
+if p1 == p2:
+    print("ISOMORPHIC") 
+else:
+    print("The strings are not isomorphic!")
+
