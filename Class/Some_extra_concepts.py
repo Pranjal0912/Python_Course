@@ -21,6 +21,24 @@
 
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# what is the meaning of this line that i am going to write below:
+if __name__ == "__main__":
+    # This line is used to check if the current script is being run as the main program or if it is being imported as a module into another script.
+    # If the script is being run directly, the code block under this condition will execute. If it is imported, the code block will not execute.
+
+# - What is the difference between a module and a package in Python?
+# A module is a single Python file that contains code, while a package is a collection of modules organized in a directory hierarchy. 
+# A package typically contains an __init__.py file to indicate that the directory is a package, and it can contain sub-packages and modules.
+
+
+# But what is the meaning of this __name__ == "__main__"?
+# In Python, every module has a built-in attribute called __name__. When a module is run directly, its __name__ is set to "__main__". When it is imported into another module, its __name__ is set to the module's name.
+# Therefore, the condition if __name__ == "__main__": is used to check if the module is being run directly or imported. If it is run directly, the code block under this condition will execute, allowing you to include test code or script functionality that should only run when the module is executed as the main program.
+# If the module is imported, the code block will not execute, preventing unintended side effects when the module is used as a library in other scripts.
+
+
+# -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # A Quick recap on how to import a library in Python:
 #  1. import re: This statement imports the entire 're' module, allowing you to access all of its functions and classes using the 're' prefix before a '.' and the function name. For example, you would use 're.search()' to call the 'search' function from the 're' module.
 #  2. 'from re import *' or 'from re import {some specific function or class}': This statement imports specific functions or classes from the're' module directly into the current namespace. 
