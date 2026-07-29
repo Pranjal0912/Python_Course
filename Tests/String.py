@@ -475,3 +475,31 @@ if p1 == p2:
 else:
     print("The strings are not isomorphic!")
 
+
+def check_double_inverse(num):
+    """This Function checks if we take the last digit of the number and make it its first digit,
+       would it become double the orignal number or not, Based on that this Returns True or False"""    
+    text = str(num)
+    rotated = int(text[-1] + text[:-1])
+    return rotated == 2 * num
+
+
+def find_double_inverse():
+    for digits in range(2, 100):
+        for last_digit in range(1, 10):
+            numerator = last_digit * (10 ** (digits - 1) - 2)
+
+            if numerator % 19 != 0:
+                continue
+
+            prefix = numerator // 19
+            number = 10 * prefix + last_digit
+
+            if len(str(number)) == digits:
+                return number
+
+    return None
+
+
+number = find_double_inverse()
+print(f"{number} is a Double Inverse.")

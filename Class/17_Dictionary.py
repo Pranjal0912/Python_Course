@@ -297,10 +297,17 @@ print(d.values()) # Output: dict_values(['John', 30, 'New York']) -> Again this 
 for value in d.values(): # This will iterate over the values of the dictionary using the 'values()' method.
     print(value) # Output: John, 30, New York -> This will print all the values in the dictionary.
 
+# OR 
+for i in range(len(d)): # This will iterate over the values of the dictionary using the 'values()' method and the range() and len() functions.
+    print(list(d.values())[i]) # Output: John, 30, New York -> This will print all the values in the dictionary using indexing to access the values of the dictionary, because the view object is not a list but it can be converted into a list using the list() function and then we can use indexing to access the values of the dictionary.
+
 # C) Looping through the key-value pairs of the dictionary using the 'items()' method:
 print(d.items()) # Output: dict_items([('Name', 'John'), ('Age', 30), ('City', 'New York')]) -> This is a view object that displays a list of all the key-value pairs in the dictionary such that each element in the list is a tuple of (key, value). 
 for k,v in d.items(): # This will iterate over the key-value pairs of the dictionary using the 'items()' method.
     print(k, f' : {v}') # Output: Name: John, Age: 30, City: New York -> This will print the key and its corresponding value in the dictionary.
+# OR
+for item in d.items(): # This will iterate over the key-value pairs of the dictionary using the 'items()' method.
+    print(item[0], f' : {item[1]}') # Output: Name: John, Age: 30, City: New York -> This will print the key and its corresponding value in the dictionary, because each element in the view object is a tuple of (key, value) and we can access the key and value using indexing.
 
 # D) Looping through the keys of the dictionary using the 'get()' method:
 for key in d: # This will iterate over the keys of the dictionary using the 'get()' method.

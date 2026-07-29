@@ -146,7 +146,7 @@ def greet(name, msg="Hello"): # -> Here, 'msg' is a default argument with a defa
 greet("Alice")          # -> Uses default message "Hello"
 greet("Bob", msg="Hi")  # -> When the value of the default argument is provided in the function call it overrides default message with "Hi", which was the actual argument passed to the function.
 
-# So comming back to 'index()' function, its actual signature looks like -> index(substring, start=0, end=len(string))
+# So comming back to 'index()' function, its actual signature looks like -> index(substring, start=0, end=len(iterable))
 
 # lets now try to make our volume function more flexible by adding default arguments to it:
 def volume(length, width=1, height=1): # -> Here, 'width' and 'height' are default arguments with default values of 1. If we do not provide values for these parameters when calling the function, it will use the default values.
@@ -162,7 +162,23 @@ v = volume() # -> This will raise an error because 'length' is a required parame
 
 # Now one key obeservation is that the assignment of default argument is done from left to right, so if we want to provide a value for 'height' but not for 'width', we have to use keyword arguments:
 v = volume(5, height=2) # -> Here, we are providing a value for 'length' and 'height', so the function will use the default value for 'width'.
-# -> So the arguments must me made default from right to left.
+
+
+# - Among ordinary positional-or-keyword parameters:
+# Once a parameter has a default value, every ordinary parameter after it must also have a default value.
+
+# Valid:
+def valid_function(a, b=10, c=20):
+    pass
+
+# Invalid:
+
+# def invalid_function(a, b=10, c): -> Error: SyntaxError: non-default argument follows default argument
+#     pass
+
+# This restriction prevents ambiguity when positional arguments are supplied. Therefore, it is more accurate to say:
+
+# --> "Required ordinary parameters(Non-default) must appear before default ordinary parameters."
 
 # - Hetrogeneous default arguments are allowed in Python, meaning that we can have a mix of required and optional parameters in a function signature. However, all required parameters must come before any optional parameters in the function signature.
 # Example:
@@ -263,3 +279,125 @@ def fun1(a, b, /, *, c): # -> a and b are positional-only arguments, c is a keyw
 def fun2(a, b, /, *, c, d): # -> a and b are positional-only arguments, c and d are keyword-only arguments.
     pass
 # def fun3(a, b, *, /, c, d): # -> This is not a valid signature because the forward slash (/) must come before the asterisk (*).
+
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 8. Variable-length Arguments:
+
+# lets take an example of 'print()' function:
+# Now 'print()' function can take any number of arguments, and it will print them all. 
+print("Hello", "World", "!", 1, 2, 3) # -> This will print "Hello World ! 1 2 3" --> Here the number of arguments(objects) is 6.
+print("Hello", "World") # -> This will print "Hello World" -> Here the number of arguments(objects) is 2.
+
+# 'print()' is an example of a function that takes variable-length arguments.
+# - Variable-length arguments allow a function to accept any number of arguments, which can be useful when the number of inputs is not known in advance.
+# - In Python, we can define a function that takes variable-length arguments using the *args and **kwargs syntax.
+# - The *args syntax allows a function to accept any number of positional arguments. The **kwargs syntax allows a function to accept any number of keyword arguments.
+
+# A. Variable-length Positional Arguments (*args):
+
+# - The *args syntax allows a function to accept any number of positional arguments.
+# - The arguments are passed to the function are collected into a tuple, which can be accessed inside the function.
+# Example:
+
+def fun(*args):
+    """This function takes any number of positional arguments and prints them."""
+    print(args)
+
+fun(1, 2, 3) # -> This will print "(1, 2, 3)"
+fun("Hello", "World") # -> This will print "('Hello', 'World')
+fun(1) # -> This will print "(1,)"
+
+# Now the question arises, Can I have more arguments along with *args in a function signature?
+# - Yes, we can have more arguments along with *args in a function signature. However, there are some rules to follow:
+# 1. If arguments are specified before *args, they must be passed as positional arguments only when calling the function. 
+# 
+# Example:
+def fun(a, b, *args):
+    """This function takes two regular positional arguments and any number of additional positional arguments."""
+    print(a, b, args)
+
+fun(10, 20, 30) # -> This will print "10 20 (30,)" Because 10 is assigned to a, 20 is assigned to b, and 30 is collected into the args tuple.
+
+# 2. If arguments are specified after *args, they must be passed as keyword arguments only when calling the function. ( Why? Because if we pass them as positional arguments, they will be collected into the args tuple, and the function will not be able to access them as separate arguments.)
+# Example:
+def fun(a, b, *args, c, d):
+    """This function takes two regular positional arguments, any number of additional positional arguments, and two keyword-only arguments."""
+    print(a, b, args, c, d)
+
+fun(1, 2, 3, c=10, d=20) # -> This will print "1 2 (3,) 10 20" -> Here 1 is assigned to a, 2 is assigned to b on the basis of position, 3 is collected into the args tuple, and 10 and 20 are assigned to c and d on the basis of keyword.
+fun(1, 2, 3, 4, 5) # -> This will raise a TypeError because c and d are keyword-only arguments and must be specified by name.
+
+
+# Now suppose if we pass a single list (or a tuple) as an argument to the function, then it will be treated as a single positional argument and will be collected into the args tuple as a single element.
+def fun(*args):
+    """This function takes any number of positional arguments and prints them."""
+    print(args)
+l1 = [1, 2, 3]
+fun(l1) # -> This will print "([1, 2, 3],)" -> Here the list [1, 2, 3] is treated as a single positional argument and is collected into the args tuple as a single element.
+# But if we want to pass the elements of the list (or tuple) as separate positional arguments, we can use the unpacking operator (*) to unpack the list (or tuple) into separate arguments. --> REMEMBER : We learned about unpacking in the previous class (Class/15_Tuple.py)
+fun(*l1) # -> This will print "(1, 2, 3)" -> Here the list [1, 2, 3] is unpacked into separate positional arguments and is collected into the args tuple as separate elements.
+
+
+# B. Variable length Keyword Arguments (**kwargs):
+
+#  - The **kwargs syntax allows a function to accept any number of keyword arguments.
+#  - The arguments passed to the function are collected into a dictionary, which can be accessed inside the function.
+# Example:
+
+def fun(**kwargs):
+    """This function takes any number of keyword arguments and prints them."""
+    print(kwargs)
+    for k,v in kwargs.items(): # This will iterate over the key-value pairs of the dictionary using the 'items()' method.
+        print(k, f' : {v}') # Output: Name: John, Age: 30, City: New York -> This will print the key and its corresponding value in the dictionary.
+
+fun(a=1, b=2, c=3) # -> This will print "{'a': 1, 'b': 2, 'c': 3}" -> Here the keyword arguments are collected into the kwargs dictionary.
+fun(name="Alice", age=30) # -> This will print "{'name': 'Alice', 'age': 30}" -> Here the keyword arguments are collected into the kwargs dictionary.
+
+# Now just like *args, we can have more arguments along with **kwargs in a function signature. There is just one rule to follow:
+
+# 1. **kwargs must be the last parameter in the function signature and p 
+# => This is because any parameters that come after **kwargs will not be able to accept any keyword arguments, as all keyword arguments will be collected into the kwargs dictionary and a positional argument cannot be passed after a keyword argument. Hence, it is not possible to have any parameters after **kwargs in the function signature.
+# Example:
+
+def fun(a, b, **kwargs):
+    """This function takes two regular positional arguments and any number of additional keyword arguments."""
+    print(a, b, kwargs)
+
+fun(1, 2, c=3, d=4) # -> This will print "1 2 {'c': 3, 'd': 4}" -> Here 1 is assigned to a, 2 is assigned to b on the basis of position, and c and d are collected into the kwargs dictionary.
+fun(1, 2, 3) # -> This will raise a TypeError because 3 is a positional argument and cannot be passed into the kwargs dictionary. 
+fun(1,2, c=3, d=4, e=5) # -> This will print "1 2 {'c': 3, 'd': 4, 'e': 5}" -> Here 1 is assigned to a, 2 is assigned to b on the basis of position, and c, d and e are collected into the kwargs dictionary.
+
+#def fun(a, b, **kwargs, c):
+"""This function takes two regular positional arguments, any number of additional keyword arguments, and a required keyword-only argument."""
+    # print(a, b, kwargs, c)
+
+#fun(1, 2, m =10, d = 12, c=3) # -> So even though this might make sense to us, this will raise a SyntaxError because by defination, **kwargs must be the last parameter in the function signature.
+
+# C. General Form of a Function Signature:
+
+# => A usefull general form of a function signature that can accept any number of positional and keyword arguments is as follows:
+def fun(a, b, *args, c, d, **kwargs):
+    pass
+# In here:
+# - a and b are regular positional arguments.
+# - *args collects any additional positional arguments into a tuple.
+# - c and d are required keyword-only arguments. (because they come after *args)
+# - **kwargs collects any additional keyword arguments into a dictionary.
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# 9. Multiple Return Values:
+# => In Python, a function can return multiple values as a tuple.
+# Example:
+
+def fun():
+    a = 1
+    b = 2
+    c = 3
+    return a, b, c
+
+print(fun()) # -> This will print "(1, 2, 3)" -> Here the function returns a tuple containing the values of a, b, and c.
+print(type(fun())) # -> This will print "<class 'tuple'>" -> Here the function returns a tuple containing the values of a, b, and c.
+x, y, z = fun() # -> This will assign 1 to x, 2 to y, and 3 to z.
