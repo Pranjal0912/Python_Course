@@ -37,7 +37,8 @@
 
 #1. Writing a function:
 
-# - A function is defined using the def keyword, followed by the function name, parentheses (which may include parameters), and a colon.# - The function body is indented and contains the code to be executed when the function is called.
+# - A function is defined using the def keyword, followed by the function name, parentheses (which may include parameters), and a colon.
+# - The function body is indented and contains the code to be executed when the function is called.
 # - It can optionally return a value using the return statement.
 # Syntax:
 
@@ -116,7 +117,7 @@ vol2 = volume(length=5, height=2, width=3) # -> Here, the values are passed as k
     # value 2 is assigned to parameter 'height'
     # value 3 is assigned to parameter 'width'
 
-    # So here the values are assigned based on the parameter names that are specified in the function call, rather than their position in the argument list.
+    # So here the values are assigned based on the parameter names that are specified in the function call, rather than their position in the argument list. ( See how despite changing the order of the arguments, the values are still assigned to the correct parameters based on their names.)
 
 # - Keyword arguments are arguments that are passed to a function by explicitly specifying the parameter name along with its value. This allows for more flexibility in the order of arguments and makes the code more readable.
 
@@ -143,8 +144,8 @@ def greet(name, msg="Hello"): # -> Here, 'msg' is a default argument with a defa
     """This function greets the person with the provided name and message."""
     print(f"{msg}, {name}!")
 
-greet("Alice")          # -> Uses default message "Hello"
-greet("Bob", msg="Hi")  # -> When the value of the default argument is provided in the function call it overrides default message with "Hi", which was the actual argument passed to the function.
+greet("Alice")          # -> Uses default message "Hello" Output: Hello, Alice!
+greet("Bob", msg="Hi")  # -> When the value of the default argument is provided in the function call it overrides default message with "Hi", which was the actual argument passed to the function. Output: Hi, Bob!
 
 # So comming back to 'index()' function, its actual signature looks like -> index(substring, start=0, end=len(iterable))
 
@@ -164,7 +165,7 @@ v = volume() # -> This will raise an error because 'length' is a required parame
 v = volume(5, height=2) # -> Here, we are providing a value for 'length' and 'height', so the function will use the default value for 'width'.
 
 
-# - Among ordinary positional-or-keyword parameters:
+# - A) Among ordinary positional-or-keyword parameters:
 # Once a parameter has a default value, every ordinary parameter after it must also have a default value.
 
 # Valid:
@@ -176,11 +177,13 @@ def valid_function(a, b=10, c=20):
 # def invalid_function(a, b=10, c): -> Error: SyntaxError: non-default argument follows default argument
 #     pass
 
-# This restriction prevents ambiguity when positional arguments are supplied. Therefore, it is more accurate to say:
+# This restriction prevents ambiguity when positional arguments are supplied. 
+# Example: f(12, 20) -> what would the compiler do with the value 20? Should it be assigned to 'b' or 'c'? Hence, this is not allowed.
 
+#Therefore, it is more accurate to say:
 # --> "Required ordinary parameters(Non-default) must appear before default ordinary parameters."
 
-# - Hetrogeneous default arguments are allowed in Python, meaning that we can have a mix of required and optional parameters in a function signature. However, all required parameters must come before any optional parameters in the function signature.
+# - B) Hetrogeneous default arguments are allowed in Python, meaning that we can have a mix of required and optional parameters in a function signature. However, all required parameters must come before any optional parameters in the function signature.
 # Example:
 
 def fun(a=12, b=2.4, c="Hello", d=True, e =[1,2,3]):
@@ -189,7 +192,7 @@ def fun(a=12, b=2.4, c="Hello", d=True, e =[1,2,3]):
 fun(1,2,3,4,5) # -> Here, we are providing values for all parameters, so the function will use the provided values. This will print "1 2 3 4 5"
 fun() # -> Here, we are not providing any values for the parameters, so the function will use the default values. This will print "12 2.4 Hello True [1, 2, 3]"
 
-# - Default arguments are only created once when the function is defined, not each time the function is called. This means that if we use a mutable object (like a list or dictionary) as a default argument, and we modify that object inside the function, the default value will be changed for subsequent calls to the function. This can lead to unexpected behavior.
+# - C) Default arguments are only created once when the function is defined, not each time the function is called. This means that if we use a mutable object (like a list or dictionary) as a default argument, and we modify that object inside the function, the default value will be changed for subsequent calls to the function. This can lead to unexpected behavior.
 # Let's see an example of this:
 
 def fun(l=[1,2,3]):
@@ -214,7 +217,7 @@ fun() # -> This will print "[1, 2, 3, 3, 4, 5]", Now the default list has been m
 # 2. If the caller does not provide a value for that parameter, the default value is used.
 # 3. Default arguments are only created once when the function is defined, not each time the function is called, hence if a mutable object (like a list or dictionary) is used as a default argument, and it is modified inside the function, the default value will be changed for subsequent calls to the function.
 # 4. They are assigned from right to left, meaning that all required parameters must come before any optional parameters in the function signature.
-# 5. They can be of any data type.
+# 5. They can be of any data type (Heterogeneous).
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
