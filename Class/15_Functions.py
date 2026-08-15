@@ -339,7 +339,7 @@ def fun(*args):
     print(args)
 l1 = [1, 2, 3]
 fun(l1) # -> This will print "([1, 2, 3],)" -> Here the list [1, 2, 3] is treated as a single positional argument and is collected into the args tuple as a single element.
-# But if we want to pass the elements of the list (or tuple) as separate positional arguments, we can use the unpacking operator (*) to unpack the list (or tuple) into separate arguments. --> REMEMBER : We learned about unpacking in the previous class (Class/15_Tuple.py)
+# But if we want to pass the elements of the list (or tuple) as separate positional arguments, we can use the unpacking operator (*) to unpack the list (or tuple) into separate arguments. --> REMEMBER : We learned about unpacking in the previous class (Class/12_Tuple.py)
 fun(*l1) # -> This will print "(1, 2, 3)" -> Here the list [1, 2, 3] is unpacked into separate positional arguments and is collected into the args tuple as separate elements.
 
 
@@ -403,4 +403,5 @@ def fun():
 
 print(fun()) # -> This will print "(1, 2, 3)" -> Here the function returns a tuple containing the values of a, b, and c.
 print(type(fun())) # -> This will print "<class 'tuple'>" -> Here the function returns a tuple containing the values of a, b, and c.
-x, y, z = fun() # -> This will assign 1 to x, 2 to y, and 3 to z.
+x, y, z = fun() # -> This will assign 1 to x, 2 to y, and 3 to z. Reference: Unpacking of tuple in the previous class (Class/12_Tuple.py)
+

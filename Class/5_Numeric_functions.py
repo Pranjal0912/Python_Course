@@ -1,4 +1,5 @@
-# Built-in numeric functions in Python:
+# BUILT IN NUMERIC FUNCTIONS IN PYTHON
+
 # x + y --> sum of x and y
 print(10 + 5) #--> 15, since the sum of 10 and 5 is 15
 # x - y --> difference of x and y

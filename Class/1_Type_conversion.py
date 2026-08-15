@@ -16,9 +16,9 @@ print(int(binary,2)) # this 2 is provided to let the compiler know that the numb
 
 #===> float conversion
 x=10
-print(float(x))
-print(float(b))
-print(float(d))
+print(float(x)) # Output: 10.0
+print(float(b)) # Output: 1.0
+print(float(d)) # Output: 123.0
 # print(float(e,2))   # this will throw an error because 'float()', by defination takes only one parameter (i.e. there is no float(x, base) function in python library)
 
 #===> bool() conversion
@@ -26,7 +26,7 @@ a=2
 b=1
 c=0
 print(bool(a),bool(b),bool(c))      #any integer '>= 1' when converted to boolean gives 'True' as the value in boolean
-print(bool(2+4j))       #complex numbers are accepted by 'bool()' function 
+print(bool(2+4j))       #complex numbers are accepted by 'bool()' function => bool(complex_number) = True
 print(bool(21.34))      # As a rule of thumb, bool(anythihgn)=True and bool(0)=False
 print(bool('ar'))       # for a string as well this give bool(string) = True
 print(bool())           # 'bool()' function without any parameters gives you 'False'
