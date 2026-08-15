@@ -1,14 +1,18 @@
+# STRING IN PYTHON
+
 #String literals:
 s = "hello"
 a = 'hello_a'
 b = """hello_b"""
 c = '''hello_c '''
+# So here in all these, what is a literal ?
+# => A literal is a notation for representing a fixed value in source code. In the context of strings, a string literal is a sequence of characters enclosed in quotes (single, double, or triple quotes) that represents a string value directly in the code.
 
 #Length of a string:
-
+s = "hello"
 length = len(s)
-print(s)
-print(length)
+print(s) # Output: hello
+print(length) # Output: 5, since the length of the string "hello" is 5 characters long
 
 #Traversal:
 print(s[0])#0 --> 1st from start
@@ -16,19 +20,19 @@ print(s[4]) #4 --> 5th from start
 print(s[-1]) #-1 --> 1st from last 
 
 # Ways of traversal:
-#Method_1
+#Method_1: Using for loop
 for x in s:
     print(x,end='')
-#Method_2 
+#Method_2: Using for each loop
 for x in range(len(s)): # from 0 to len(s) i.e 5 gives 0,1,2,3,4
     print(s[x],end='')
 
 #Slicing : Operator "[]" defined as s[start:stop:step]-> just like a range function
 
 d="hello world"
-print(d[0:7]) #OR
-print(d[:7])  #--> if no start is given '0' is taken as default 
-print(d[3:7])
+print(d[0:7]) #--> This will print the substring of 'd' starting from index 0 up to (but not including) index 7, which is "hello w". Output: hello w
+print(d[:7])  #--> if no start is given '0' is taken as default. Output: hello w
+print(d[3:7]) #--> since it starts from index 3 and goes up to (but not including) index 7. Output: lo w 
 #print(d[-5:-9]) --> This is invalid the start should always be less than stop or we say that slicing is always done in the forward direction WHEN steps are positive
 print(d[-4:-1])
 print(d[0:15:2])#--> If stop > last index in string then its value is set to the last index+1 by default
@@ -37,7 +41,6 @@ print(d[::])#--> All empty means no slicing so prints the entire string as is
 print(d[::-1])#--> Reverse order 
 print(d[-3:-9:-1])#--> Since steps are negative, start > stop 
 print(d[7:1:-1])#--> Reverse slicing using positive start/stop
-
 
 
 #Sting operations 
