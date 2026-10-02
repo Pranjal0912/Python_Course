@@ -503,3 +503,9 @@ def find_double_inverse():
 
 number = find_double_inverse()
 print(f"{number} is a Double Inverse.")
+
+
+# Write a Python program to find the minimum window in a given string that will contain all the characters of another given string.
+
+s1 = "PRWSOERIUSFK"
+s2 = "OSU"

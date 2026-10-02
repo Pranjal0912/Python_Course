@@ -48,11 +48,11 @@ print(d[7:1:-1])#--> Reverse slicing using positive start/stop
 a="pranjal"
 b="verma"
 c = 'tiya'
-print(a+b)#--> 1.concatenation using '+'
-print(a*10+b)#--> 2.repetion using '*'
-print("a" in a)#--> 3.membership using 'in /not in', gives a boolean value
-print('z'not in b)
-print('ia' in  c)
+print(a+b)#--> 1.concatenation using '+'| Output: pranjalverma
+print(a*10+b)#--> 2.repetion using '*' | Output: pranjalpranjalpranjalpranjalpranjalpranjalpranjalpranjalpranjalpranjalverma
+print("a" in a)#--> 3.membership using 'in /not in', gives a boolean value | Output: True
+print('z'not in b) #--> Output: True
+print('ia' in  c) #--> Output: True
 
 #--> 4.comparison of string is done in lexical or dictionary order:-
 # suppose we have these strings 
@@ -109,10 +109,11 @@ str1 = "Welcome to python programming"
 #b) rfind:
 #   Prototype: str1.rfind(sub, start, end)  ---> wherever character is (last found or) found first but searching in reverse order, return the index of that character in the string. If not found, return -1
 print(str1.rfind("o")) #--> 20, since 'o' is found at index 20 and it is the last occurrence of 'o' in the string
-print(str1.rfind("to"))
+print(str1.rfind("to")) # --> 8, since 'to' is found at index 8 and it is the last occurrence of 'to' in the string
 
 str1 = "Welcome to python programming"
-## 2.index() method: It returns the index of the first occurrence of the specified value. If the value is not found, it raises a "ValueError".
+# 2.index() method: It returns the index of the first occurrence of the specified value. If the value is not found, it raises a "ValueError".
+
 # a) index:
 print(str1.index("python")) #--> 11
 print(str1.index("Python")) #--> ValueError: substring not found, since 'P' is capital here and 'p' is small in the string  
