@@ -1,4 +1,4 @@
-# Some Information about ASCII and Unicode:
+# Some ,Information about ASCII and Unicode:
 
 # ASCII (American Standard Code for Information Interchange) is a character encoding standard that uses 7 bits to represent characters. It includes 128 characters, which consist of:
 # A-Z: 65-90
@@ -15,7 +15,7 @@ print(chr(65))  # Output: 'A' --> This function returns the character correspond
 # Unicode is a character encoding standard that uses a variable number of bytes to represent characters.
 # It includes a much larger set of characters than ASCII, including characters from many different languages and scripts.
 # Unicode can represent over 1 million characters, and it uses different encoding forms such as UTF-8, UTF-16, and UTF-32 to represent these characters in memory.
-# In Python, a Unicode character can take up to 4 bytes of memonry, depending on the encoding used. The most common encoding for Unicode characters in Python is UTF-8, which uses 1 to 4 bytes to represent characters. 
+# In Python, a Unicode character can take up to 4 bytes of memory, depending on the encoding used. The most common encoding for Unicode characters in Python is UTF-8, which uses 1 to 4 bytes to represent characters. 
 # For example, ASCII characters (0-127) are represented using 1 byte in UTF-8, while characters outside the ASCII range may require 2, 3, or 4 bytes.
 
 a = "\u03b1" # This is the Unicode character for the Greek letter alpha (α)
