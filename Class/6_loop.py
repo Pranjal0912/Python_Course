@@ -14,11 +14,13 @@ while(True):   # this is while loop
     i+=1
 
 
-# 2. for loop: A for loop is used to iterate over a sequence (like a list, tuple, dictionary, set, or string) and execute a block of code for each item in the sequence.
+# 2. for loop: A 'for' loop is used to iterate over a sequence (like a list, tuple, dictionary, set, or string) and execute a block of code for each item in the sequence.
 
 # The syntax of a for loop is:
+
 #       for variable in sequence:
 #          # body of loop
+
 
 
 for j in range(1,4):  # this is for loop that uses range function  
@@ -29,7 +31,7 @@ for j in range(1,4):  # this is for loop that uses range function
 # 'break' statement is used to break the nearest 'loop'
 # 'continue' statement is used for skiping that particular iteration in a 'loop'
 
-# 4. 'for/while-else':- an  'else' can be used outside of if in a for loop or a while loop, such that that the else statment runs only if the loop is completed properly whithout anything breaking it. 
+# 4. 'for/while-else':- an  'else' can be used outside of a for loop or a while loop, such that that the 'else' statment runs only if the loop is completed properly whithout anything breaking it. 
 
 # A basic structure of a counter controlled ( for loop ) in python is :- 
     #for counter in range(start, stop, step):
@@ -40,7 +42,7 @@ for j in range(1,4):  # this is for loop that uses range function
 print(range(1,4) )# this will not give you the numbers from 1 to 3 but it will give you a range object which is a generator object that generates the numbers from 1 to 3.
 
 # -- Why is it like that?
-# -> See a range object is a lightweight sequence description, so the object represents a sequence of numbers, but it does not store them in memory. Instead, it generates the numbers on-the-fly as you iterate over it. This is why when you print a range object, you see something like 'range(1, 4)' instead of the actual numbers. 
+# -> See a range object is a lightweight sequence description, so the object represents a sequence of numbers, but it does not store them in memory. Instead, it generates the numbers on-the-fly as you iterate over it. This is why when you print a range object, you see something like 'range(start, stop, step)' instead of the actual numbers. 
 
 # -- Now why it does that ?
 # -> EFFICIENCY: The range object is designed to be memory efficient. 

@@ -21,8 +21,8 @@
 
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# what is the meaning of this line that i am going to write below:
-if __name__ == "__main__":
+# what is the meaning of this line that I am going to write below:
+# if __name__ == "__main__":
     # This line is used to check if the current script is being run as the main program or if it is being imported as a module into another script.
     # If the script is being run directly, the code block under this condition will execute. If it is imported, the code block will not execute.
 
