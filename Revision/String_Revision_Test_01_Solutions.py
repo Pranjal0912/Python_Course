@@ -232,3 +232,64 @@ names = ["Alice", "Bob", "Charlie"]
 # Each line must have a total width of 22 characters.
 # Use string methods from your notes, not manual calculations of how many * characters to append.
 
+for i in range(len(names)):
+    print(names[i].center(22, "*"))
+
+# Q15. Removing prefixes and suffixes
+# Given:
+
+filename = "report_final_final.pdf"
+
+# Write code using appropriate string methods to:
+# 1. Remove the prefix "report_".
+# 2. Remove the suffix ".pdf".
+# 3. Remove only the final occurrence of "_final".
+
+filename = ((filename.removeprefix("report_")).removesuffix(".pdf")).removesuffix("_final")
+print(filename)
+
+# Explain why .strip() is not a suitable substitute for .removeprefix() or .removesuffix().
+
+# -> I don't know bud , maybe because strip removes from either side of the string wheras removeprefix and removesuffix target a spceific end of the string , Not sure can you explain me if i am not correct 
+
+
+# Q16. String identity versus equality
+# Study this code:
+
+s1 = "hello"
+s2 = s1
+s3 = s1.replace("h", "j")
+
+print(s1)#-> hello
+print(s2)#-> hello
+print(s3)#->jello
+
+s1 = s1.upper()
+
+print(s1) #-> HELLO
+print(s2) #-> hello
+
+# Predict all outputs, then explain:
+# 1. Which variables initially refer to the same object? --> I belive s1 and s2 both refer to the same object whose values is "hello"
+# 2. Does .replace() mutate the original string? --> No, none of the string class functions have the power to change or modify the orignal string object, string in general is a immutable object in python, hence '.replace()' function is no exception to this rule 
+# 3. Why doesn't changing s1 affect s2? --> because initially when we do s1 = s2, here both s1 and s2 are pointing to the same object with value "hello" but when we do s1 = s1.upper() then at that moment a new object is created with value "HELLO" and then s1 starts pointing to that while s2 is still pointing to the orignal object with value "hello", s2 might have been modified too if s1 and s2 were lists (MAYBE) cuz of mutability of list data type
+# Finally, explain whether s1 is s2 is a reliable way to compare string contents and why. --> No despite, s1 and s2 having the same value (and initially pointing to the same object) but on making some operations to s1 (or s2) they eventually point to a different object and while the 2 different object may (due to some operations ) have a similar value but that won't be the same object in memory and hence "s1 is s2" will eventually return false despite having the same value 
+
+
+# Q17. Empty strings and special method behaviour
+# Without running the code, predict the output of:
+
+s = ""
+
+print(s.isalpha()) #-> False
+print(s.isdigit()) #-> False
+print(s.isspace()) #-> False
+print(s.isprintable()) #-> True
+print(s.isascii()) #-> True
+print(s.startswith("")) #-> True
+print(s.endswith("")) #-> True
+print("abc".count("")) #-> Not sure whats the output of this one, its really a tricky one 😅🤣
+# Pay particular attention to the last three expressions. 
+# Explain any results that surprise you.
+
+# "print(s.isprintable()) #-> True" and "print(s.isascii()) #-> True" are surprising to me because I thought that an empty string would not be printable or ascii but it seems like it is considered as a printable and ascii character.
