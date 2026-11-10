@@ -34,7 +34,7 @@ print(d[0:7]) #--> This will print the substring of 'd' starting from index 0 up
 print(d[:7])  #--> if no start is given '0' is taken as default. Output: hello w
 print(d[3:7]) #--> since it starts from index 3 and goes up to (but not including) index 7. Output: lo w 
 #print(d[-5:-9]) --> This is invalid the start should always be less than stop or we say that slicing is always done in the forward direction WHEN steps are positive
-print(d[-4:-1])
+print(d[-4:-1]) # --> This will print the substring of 'd' starting from index -4 up to (but not including) index -1, which is "orl". Output: orl 
 print(d[0:15:2])#--> If stop > last index in string then its value is set to the last index+1 by default
 print(d[::2]) #--> defualt values are taken in case of empty parameters, start = 0, stop = len(d), step = 2
 print(d[::])#--> All empty means no slicing so prints the entire string as is 
@@ -50,7 +50,7 @@ b="verma"
 c = 'tiya'
 print(a+b)#--> 1.concatenation using '+'| Output: pranjalverma
 print(a*10+b)#--> 2.repetion using '*' | Output: pranjalpranjalpranjalpranjalpranjalpranjalpranjalpranjalpranjalpranjalverma
-print("a" in a)#--> 3.membership using 'in /not in', gives a boolean value | Output: True
+print("a" in a)#--> 3.membership using 'in' /'not in', gives a boolean value | Output: True
 print('z'not in b) #--> Output: True
 print('ia' in  c) #--> Output: True
 
@@ -92,7 +92,7 @@ print(dir(str)) # This will show the list of all the methods of the string class
 
 str1 = "Welcome to python programming"
 print(str1)
-# 1.find() method: It returns the index of the first occurrence of  the specified value. If the value is not found, it returns -1.
+# 1.find() method: It returns the index of the first occurrence of the specified value. If the value is not found, it returns -1.
 
 # a)find:
 #   Prototype: str.find(sub, start, end)  ---> wherever character is first found, return the index of that character in the string. If not found, return -1
@@ -131,19 +131,18 @@ print(str1.count("to")) #--> 1, since 'to' is found 1 time in the string
 # -----------------------------------------------------------------------------------------------------------
 # Alignment and Padding:
 # -----------------------------------------------------------------------------------------------------------
-string1 = "   Hello" # string with leading spaces
-string2 = "World   " # string with trailing spaces
-string3 = "   Hello World   " # string with leading and trailing spaces
+string1 = "Hello" 
+string2 = "World" 
 string4 = "Hello World" # string without leading and trailing spaces
 
 # 1.ljust(width,fillchar) method: It left-aligns the string and pads it with the specified character (default is space) to a specified width.
 # Parameters:
 # width: This is the total width of the resulting string after padding.
 # fillchar: This is the character used to pad the string. It is optional and defaults to a space.
-print(string1.ljust(20, '*')) #--> '   Hello**********', since the total width is 20 and the original string is 8 characters long, so it adds 12 '*' characters to the right of the string to make the total width 20
+print(string1.ljust(20, '*')) #--> 'Hello***************', since the total width is 20 and the original string is 5 characters long, so it adds 15 '*' characters to the right of the string to make the total width 20
 
 # 2.rjust(width,fillchar) method: It right-aligns the string and pads it with the specified character (default is space) to a specified width.
-print(string2.rjust(20, '*')) #--> '**********World   ', since the total width is 20 and the original string is 8 characters long, so it adds 12 '*' characters to the left of the string to make the total width 20
+print(string2.rjust(20, '*')) #--> '***************World', since the total width is 20 and the original string is 5 characters long, so it adds 15 '*' characters to the left of the string to make the total width 20
 
 # 3.center(width,fillchar) method: It centers the string and pads it with the specified character (default is space) to a specified width.
 print(string4.center(20, '*')) #--> '*****Hello World*****', since the total width is 20 and the original string is 11 characters long, so it adds 4 '*' characters to the left and 5 '*' characters to the right of the string to make the total width 20
@@ -175,7 +174,7 @@ print(string5.strip('#')) #--> 'Hello', since it removes the '#' characters from
 print(string5.lstrip('#')) #--> 'Hello###', since it removes the '#' characters from the left side of the string
 print(string5.rstrip('#')) #--> '###Hello', since it removes the '#' characters from the right side of the string       
 
-string6 = "$%Hello $@%"
+string6 = "$%Hello @$%"
 print(string6.strip('$%@ '))# --> 'Hello', since it removes the '$', '%', '@' and ' ' characters from both sides of the string
 # -----------------------------------------------------------------------------------------------------------
 
@@ -200,8 +199,9 @@ print(string1.replace('-', '*', 3)) #--> 'a*b*c*d-e-f-g-h', since it replaces th
 s1 = "abc"
 s2 = "xyz"
 print(s1.join(s2)) #--> 'xabcyabcz', since it inserts the string 'abc' between each character of the string 'xyz'
+print("".join(s2)) #--> 'xyz', since it joins the characters of the string 'xyz' with an empty string as the delimiter
 # With list:
-list1 = ['Hello', 'World', 'Python']
+list1 = ['Hello', 'World', 'Python']    
 s3 = "-"
 print(s3.join(list1)) #--> 'Hello-World-Python', since it inserts the string '-' between each element of the list
 # With tuple:   
