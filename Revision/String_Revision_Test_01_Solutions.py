@@ -293,3 +293,73 @@ print("abc".count("")) #-> Not sure whats the output of this one, its really a t
 # Explain any results that surprise you.
 
 # "print(s.isprintable()) #-> True" and "print(s.isascii()) #-> True" are surprising to me because I thought that an empty string would not be printable or ascii but it seems like it is considered as a printable and ascii character.
+
+
+# Q18. Non-overlapping substring occurrences
+# Given:
+
+s = "aaaaa"
+
+# Predict:
+
+print(s.count("aa")) # -> 2
+print(s.find("aa")) # -> 0
+print(s.rfind("aa")) # -> 4
+print(s.replace("aa", "X")) # -> XXa
+print(s.replace("aa", "X", 1)) # -> Xaaa
+
+# Now answer:
+# How many overlapping occurrences of "aa" exist in "aaaaa"? -> 4 overlapping occurences of "aa"
+# Write your own code to count the overlapping occurrences using a loop and slicing. Do not use regular expressions.
+s = "aaaaa"
+char = input("Give the sub string: ")
+count = 0
+while len(s) >= len(char) :
+    index = s.find(char)
+    next_char = s[index+1:].find(char)
+    if  next_char == 0 :
+        count+=1
+    if next_char == -1 and len(s) == len(char) and index == 0: 
+        count+=1
+        break
+    s=s[index+1:]
+print(count)
+
+# Let me also share with you a learning which i got in this test from this question, in line 322, initially instead of logical 'and' i used bitwise '&' operator and then my if statement always came out to be false, this happened because the precedence of & is higher than comparision operator when epxressions are not seperated by paranethesis 
+# So this was a good learning, APART from a fair complex logic ( according to my standars ofcourse tell me if my code passes all the edge cases or not or if there is a better way to approach this problem using Data Structures and Algorithms, i would love to learn from you buddy)
+
+
+# Q19. Advanced split() edge cases
+# Predict the exact output:
+
+s1 = "  apple   banana  cherry  "
+s2 = ",apple,,banana,"
+
+print(s1.split()) # -> ['apple','banana','cherry']
+print(s1.split(" ")) # -> ['apple','banana','cherry']
+print(s1.split(None, 1)) # -> ['apple   banana  cherry  ']
+print(s2.split(",")) # -> ['', 'apple', '', 'banana', '']
+print(s2.split(",", 2)) # -> ['', 'apple', ',banana,']
+print("".split(",")) # -> ['']
+print("".split()) # -> ['']
+
+# can you please explain the reasoning for all these except the first 2 
+
+# Then explain the difference between calling .split() with no separator and supplying an explicit separator.
+
+#-> split() with no separator splits the string at any whitespace character and removes any leading or trailing whitespace, while split() with an explicit separator splits the string at the specified separator and retains any leading or trailing separators.
+
+# Q20. Correct a validation program
+# The following code is intended to determine whether a string is a valid non-negative integer written using ASCII digits 0–9.
+
+def valid_number(s):
+    return s.isnumeric()
+
+# But it incorrectly accepts certain values.
+
+# Your tasks:
+# 1. Provide two examples that this function incorrectly accepts. # -> T
+# 2. Explain why .isnumeric() is too broad.
+# 3. Correct the function using string methods from your notes.
+# 4. Ensure empty strings, negative numbers, decimal points, and non-ASCII numeric characters are rejected.
+# The function should return a Boolean.
