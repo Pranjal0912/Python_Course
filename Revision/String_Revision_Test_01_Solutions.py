@@ -358,8 +358,117 @@ def valid_number(s):
 # But it incorrectly accepts certain values.
 
 # Your tasks:
-# 1. Provide two examples that this function incorrectly accepts. # -> T
-# 2. Explain why .isnumeric() is too broad.
+# 1. Provide two examples that this function incorrectly accepts. # -> Two examples that this function incorrectly accepts are "²" and "½" because they are numeric characters but not ASCII digits 0-9.
+# 2. Explain why .isnumeric() is too broad. # -> There are many numeric characters in Unicode that are not ASCII digits 0-9, such as superscripts, fractions, and Roman numerals. The .isnumeric() method returns True for all of these characters, which is too broad for the intended purpose of validating non-negative integers written using ASCII digits 0-9.
 # 3. Correct the function using string methods from your notes.
-# 4. Ensure empty strings, negative numbers, decimal points, and non-ASCII numeric characters are rejected.
+def valid_number(s):
+    return s.isdigit() and s.isascii() and s != ""
+
+# 4. Ensure empty strings, negative numbers, decimal points, and non-ASCII numeric characters are rejected. # The corrected function now checks that the string is composed only of ASCII digits (0-9) and is not empty, 
 # The function should return a Boolean.
+
+
+# Q21. String comparison and Unicode
+# Predict the output:
+
+print("apple" < "application") # -> True, since "apple" comes before "application" lexicographically
+print("Cat" < "cat") # -> True, since uppercase letters have lower Unicode code points than lowercase letters
+print("apple" < "Apple") # -> False, since lowercase letters have higher Unicode code points than uppercase letters
+print("10" < "2") # -> True, since "10" comes before "2" lexicographically
+print("abc" < "abcd") # -> True, since "abc" comes before "abcd" lexicographically
+print("abc" == "ABC".lower()) # -> True, since "abc" is equal to "ABC" converted to lowercase
+
+# Explain the rule Python follows when comparing strings lexicographically.
+# Then answer: Is this comparison based on the dictionary order used by humans, or on Unicode code-point values?
+
+# Q22. Debugging a text-processing pipeline
+# A student wants to convert this input:
+
+s = "   PYTHON---IS---AWESOME   "
+
+# into:
+# Python Is Awesome
+
+# They write:
+
+s.strip()
+s.replace("---", " ")
+s.title()
+
+print(s)
+
+
+# But it doesn't work.
+
+# Your tasks:
+# 1. Explain the precise reason for the incorrect output. -> This happened because all string function work on string but they do not modify the orignal string, that only happens if we update the value of the string after performing some action on it 
+# 2. Correct the code.
+
+s = s.strip()
+s = s.replace("---", " ")
+s = s.title()
+
+print(s) #--> Now it works fine 
+
+# 3. Rewrite it as one chained expression.
+
+print(s.strip().replace("---", " ").title())
+
+# 4. Explain the sequence in which the chained methods execute.
+#-> The methods execute from left to right, with the output of each method being passed as the input to the next method in the chain. First, s.strip() removes leading and trailing whitespace, then s.replace("---", " ") replaces all occurrences of "---" with a space, and finally s.title() capitalizes the first letter of each word in the resulting string.
+
+# 5. State whether the original string object gets modified.
+# -> No, the original string object does not get modified. In Python, strings are immutable, so any operation that appears to modify a string actually creates a new string object.
+
+# Q23. Build a custom string search
+# Create a function:
+
+# def custom_find(text, sub, start=0):
+    # ...
+
+# Requirements:
+# - Return the index of the first occurrence of sub at or after start.
+# - Return -1 if it is not found.
+# - Do not use .find(), .index(), .rfind(), or .count().
+# - You may use loops, indexing, slicing, and len().
+
+def custom_find(text, sub, start = 0):
+    if sub not in text:
+        return -1
+    diff = 0
+    count = 0
+    stop = False
+    for i in range(len(sub)):
+        if stop:
+            break
+        if count == len(sub):
+            print(diff)
+            break
+        for j in range(len(text)):
+            if text[j] == sub[i]:
+                if i == 0:
+                    diff = j-i
+                    count +=1
+                    break
+                elif diff == j-i:
+                    count+=1
+                    break
+                else:
+                    diff=0
+                    count = 0
+                    stop= True
+                    break
+
+
+# -> First i wrote this crappy code, but I optimized it further 
+
+
+
+# Test it with:
+
+custom_find("banana", "ana")
+custom_find("banana", "ana", 2)
+custom_find("python", "java")
+
+# For this exercise, assume sub is nonempty and start is a non-negative integer.
+# Explain how your algorithm avoids checking beyond the possible starting positions.
